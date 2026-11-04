@@ -151,37 +151,30 @@
 </div></div>
 </section>
 
-<!-- ============================================================ DESIGN GOALS -->
-<section class="slide" data-title="Design Goals" data-group="Introduction">
+<!-- ============================================================ FORMATIVE STUDY -->
+<section class="slide" data-title="Formative Study" data-group="Introduction">
 <div class="frame"><div class="stage">
-  <div class="eyebrow">Design goals</div>
-  <h2 class="title">Four gaps through the <em>Cognitive Dimensions of Notations</em></h2>
-  <p class="lead">Grounded in our prior study with 15 developers <a class="venue-tag link" href="https://arxiv.org/abs/2508.01523" target="_blank" rel="noopener">VL/HCC '25 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>, this framework reveals four gaps.</p>
+  <div class="eyebrow">Formative study</div>
+  <h2 class="title">What does it take to modify code through NL summaries?</h2>
+  <p class="lead">In our study with <b>15 developers</b> <a class="venue-tag link" href="https://arxiv.org/abs/2508.01523" target="_blank" rel="noopener">VL/HCC '25 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>, participants edited an NL summary of existing code in a basic prototype to drive code changes.</p>
 
-  <div class="body s-dg">
-    <div class="dg" data-r>
-      <div class="dim-name">Abstraction Gradient</div>
-      <div class="gap"><i class="fa-solid fa-lock"></i><p>A fixed abstraction gradient that cannot adapt across cognitive tasks</p></div>
-      <div class="dg-arrow"><i class="fa-solid fa-arrow-down"></i></div>
-      <div class="goal"><span class="tag">DG1</span>Enable an adaptive abstraction gradient</div>
+  <div class="body row s-form">
+    <div class="col form-left">
+      <figure class="proto" data-r>
+        <img src="figures/paper/pasta-prototype.png" alt="Basic prototype: a selected code region with an editable summary-mediated prompt showing inline insertions and deletions">
+      </figure>
+      <div class="pro" data-r style="--d:1">
+        <i class="fa-solid fa-thumbs-up"></i>
+        <p>Modifying summaries can prompt code changes, with better comprehension and control over untouched code.</p>
+      </div>
     </div>
-    <div class="dg" data-r style="--d:1">
-      <div class="dim-name">Closeness of Mapping</div>
-      <div class="gap"><i class="fa-solid fa-link-slash"></i><p>Implicit NL-code links burden working memory</p></div>
-      <div class="dg-arrow"><i class="fa-solid fa-arrow-down"></i></div>
-      <div class="goal"><span class="tag">DG2</span>Ensure tight and interactive mapping</div>
-    </div>
-    <div class="dg" data-r style="--d:2">
-      <div class="dim-name">Viscosity</div>
-      <div class="gap"><i class="fa-solid fa-pencil"></i><p>High effort in translating vague intent into precise summary edits</p></div>
-      <div class="dg-arrow"><i class="fa-solid fa-arrow-down"></i></div>
-      <div class="goal"><span class="tag">DG3</span>Minimize viscosity in intent specification</div>
-    </div>
-    <div class="dg" data-r style="--d:3">
-      <div class="dim-name">Visibility &amp; Consistency</div>
-      <div class="gap"><i class="fa-solid fa-eye-slash"></i><p>Summaries regenerated without surfacing inspectable diffs</p></div>
-      <div class="dg-arrow"><i class="fa-solid fa-arrow-down"></i></div>
-      <div class="goal"><span class="tag">DG4</span>Maintain high visibility and consistency</div>
+
+    <div class="col grow needs">
+      <div class="needs-h" data-r style="--d:1"><span>Shortcomings observed</span><span>Design goals</span></div>
+      <div class="need" data-r style="--d:2"><div class="nd-gap"><i class="fa-solid fa-lock"></i>Overly rigid representations</div><i class="fa-solid fa-arrow-right"></i><div class="nd-goal"><b>DG1</b> Enable an adaptive abstraction gradient</div></div>
+      <div class="need" data-r style="--d:3"><div class="nd-gap"><i class="fa-solid fa-link-slash"></i>Implicit NL-code links</div><i class="fa-solid fa-arrow-right"></i><div class="nd-goal"><b>DG2</b> Ensure tight and interactive mapping</div></div>
+      <div class="need" data-r style="--d:4"><div class="nd-gap"><i class="fa-solid fa-pencil"></i>Disproportionate editing effort</div><i class="fa-solid fa-arrow-right"></i><div class="nd-goal"><b>DG3</b> Minimize viscosity in intent specification</div></div>
+      <div class="need" data-r style="--d:5"><div class="nd-gap"><i class="fa-solid fa-eye-slash"></i>Summaries fully regenerated after edits</div><i class="fa-solid fa-arrow-right"></i><div class="nd-goal"><b>DG4</b> Maintain high visibility and consistency</div></div>
     </div>
   </div>
 
