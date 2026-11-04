@@ -65,36 +65,36 @@
   <h2 class="title">Code modification is cognitively demanding</h2>
   <p class="lead">Developers devote a substantial portion of their effort to code modification: altering existing programs to fit new tasks.</p>
 
-  <div class="body s-demand">
-    <div class="sem" data-r>
+  <div class="body s-demand" data-steps="3">
+    <div class="sem" data-build="1">
       <div class="icon-badge"><i class="fa-solid fa-brain"></i></div>
-      <p>“In the modification task the first step is the development of <b>internal semantics</b> representing the current program.”</p>
+      <p>“In the modification task the first step is the development of <b>internal semantics</b> representing the current program. The statement of the modification must be reflected in an alteration to the internal semantics, followed by an alteration of the programming statements.”</p>
       <span class="sem-src">Shneiderman &amp; Mayer, 1979</span>
     </div>
 
-    <div class="stages">
-      <div class="card stage-card" data-r style="--d:1">
+    <div class="stages" data-build="1">
+      <div class="card stage-card">
         <div class="k"><span class="num">1</span>Comprehend</div>
         <p>Construct an internal semantics of the existing code</p>
         <div class="foot-note">Can consume up to <b class="gold">58%</b> of working time</div>
       </div>
-      <div class="arrow" data-r style="--d:1"><i class="fa-solid fa-arrow-right"></i></div>
-      <div class="card stage-card" data-r style="--d:2">
+      <div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="card stage-card">
         <div class="k"><span class="num">2</span>Plan &amp; map</div>
         <p>Form a modification plan, then map it back to the program's formal syntax</p>
         <div class="foot-note"><i class="fa-solid fa-right-to-bracket"></i> Gulf of Execution</div>
       </div>
-      <div class="arrow" data-r style="--d:2"><i class="fa-solid fa-arrow-right"></i></div>
-      <div class="card stage-card" data-r style="--d:3">
+      <div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="card stage-card">
         <div class="k"><span class="num">3</span>Validate</div>
-        <p>Validate that the result reflects their intent</p>
+        <p>Verify that modifications reflect their intent without unintended side effects</p>
         <div class="foot-note"><i class="fa-solid fa-right-from-bracket"></i> Gulf of Evaluation</div>
       </div>
     </div>
 
-    <div class="llm" data-r style="--d:4">
+    <div class="llm" data-build="2">
       <i class="fa-solid fa-robot"></i>
-      <p>LLMs accelerate code modification, yet developers still must ensure their intent is expressed (“fuzzy abstraction matching”) and validate the AI-generated code.</p>
+      <p>LLMs accelerate code modification, yet developers still must ensure their intent is expressed well (“fuzzy abstraction matching”) and validate the AI-generated code.</p>
     </div>
   </div>
 

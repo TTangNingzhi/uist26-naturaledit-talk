@@ -2,6 +2,11 @@
 
 .nw { white-space: nowrap; }
 [hidden] { display: none !important; }
+
+/* builds: hidden until their step is reached, keeping their space */
+[data-build] { transition: opacity 0.45s ease, transform 0.45s ease; }
+[data-build]:not(.built) { opacity: 0; transform: translateY(12px); }
+@media print { [data-build] { opacity: 1 !important; transform: none !important; } }
 .gold-word { color: var(--nd-gold); }
 .stat.gold { color: var(--nd-gold); }
 
@@ -123,7 +128,7 @@ a.venue-tag i { margin-left: 3px; font-size: 0.8em; }
   background: var(--sky-light);
 }
 
-.sem p { flex: 1; margin: 0; font-family: var(--serif); font-style: italic; font-size: 23px; line-height: 1.45; color: var(--ink-2); }
+.sem p { flex: 1; margin: 0; font-family: var(--serif); font-style: italic; font-size: 22px; line-height: 1.45; color: var(--ink-2); }
 .sem p b { font-style: normal; }
 .sem-src { flex: none; font-size: 17px; color: var(--muted); }
 .sem b { color: var(--nd-blue); }

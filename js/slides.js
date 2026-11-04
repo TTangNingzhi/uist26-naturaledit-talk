@@ -67,7 +67,8 @@
   }
 
   // step-through slides ([data-steps]): next/previous keys walk the steps before paging;
-  // [data-show="0 2"] elements appear on the listed steps, [data-go="n"] buttons jump to a step
+  // [data-show="0 2"] elements appear on the listed steps, [data-build="n"] elements appear from
+  // step n on (like slide builds), [data-go="n"] buttons jump to a step
   const steppers = new Map();
   slides.forEach((s) => {
     const box = s.querySelector('[data-steps]');
@@ -78,6 +79,7 @@
         el.hidden = !el.dataset.show.split(' ').includes(String(k));
       });
       box.querySelectorAll('[data-go]').forEach((b) => b.classList.toggle('on', +b.dataset.go === k));
+      box.querySelectorAll('[data-build]').forEach((el) => el.classList.toggle('built', k >= +el.dataset.build));
     };
     box.querySelectorAll('[data-go]').forEach((b) => b.addEventListener('click', () => set(+b.dataset.go)));
     set(0);
