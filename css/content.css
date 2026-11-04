@@ -8,6 +8,8 @@
 [data-build]:not(.built) { opacity: 0; transform: translateY(12px); }
 @media print { [data-build] { opacity: 1 !important; transform: none !important; } }
 .gold-word { color: var(--nd-gold); }
+.blue-word { color: var(--nd-blue); }
+.vsc { height: 0.95em; margin-right: 8px; vertical-align: -0.14em; }
 .stat.gold { color: var(--nd-gold); }
 
 .num {
@@ -236,13 +238,13 @@ a.venue-tag i { margin-left: 3px; font-size: 0.8em; }
 .feats { gap: 16px; }
 .feat { display: flex; gap: 18px; align-items: flex-start; padding: 18px 22px; border: 1.5px solid var(--line); border-radius: 16px; }
 .feat h3 { margin: 2px 0 0; font-size: 24px; line-height: 1.2; }
-.feat p { margin: 6px 0 10px; font-size: 19px; line-height: 1.4; color: var(--ink-2); }
+.feat p { margin: 4px 0 10px; font-size: 16.5px; line-height: 1.4; color: var(--faint); }
 .feat .cd { display: inline-flex; align-items: center; gap: 8px; padding: 3px 12px; border-radius: 999px; background: var(--warm-light); font-size: 16px; font-weight: 600; color: var(--nd-gold-dark); }
 
 /* ------------------------------------------------------------ F1 */
 
 .s-f1 { display: flex; align-items: center; justify-content: center; padding-bottom: 20px; }
-.f1fig { width: 1120px; }
+.f1fig { width: 1000px; }
 
 /* ------------------------------------------------------------ F2 */
 
