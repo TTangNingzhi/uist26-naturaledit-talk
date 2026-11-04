@@ -466,13 +466,13 @@ a.venue-tag i { margin-left: 3px; font-size: 0.8em; }
 
 .c-bottom {
   display: grid;
-  grid-template-columns: 900px auto;
+  grid-template-columns: 780px auto;
   justify-content: center;
-  gap: 40px;
+  gap: 56px;
   align-items: center;
   margin-top: 30px;
 }
 
 .c-ack { margin: 0; font-size: 14.5px; line-height: 1.45; color: var(--muted); }
-.c-logos { display: flex; align-items: center; justify-content: center; gap: 34px; }
+.c-logos { display: flex; align-items: center; justify-content: center; gap: 40px; }
 .m { font-family: var(--serif); font-style: italic; color: var(--ink); white-space: nowrap; }
