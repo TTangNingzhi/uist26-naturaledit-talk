@@ -324,24 +324,20 @@
 
   <div class="body row s-bench">
     <div class="col bench-left">
-      <div class="card conds" data-r>
+      <div class="conds" data-r>
         <div class="cond">
           <span class="cn">Direct Instruction</span>
           <div class="flow"><span class="nd">Instruction</span><i class="fa-solid fa-arrow-right"></i><span class="nd">Code</span></div>
         </div>
+        <span class="vs">vs.</span>
         <div class="cond ours">
-          <span class="cn">NL Mediation</span>
+          <span class="cn">NL Mediation <span class="note">NaturalEdit, six representation variants</span></span>
           <div class="flow"><span class="nd">Instruction</span><i class="fa-solid fa-arrow-right"></i><span class="nd nl">NL summary</span><i class="fa-solid fa-arrow-right"></i><span class="nd">Code</span></div>
-          <span class="note">NaturalEdit's two-step workflow, across six representation variants</span>
         </div>
-        <div class="sets">
-          <div><b>CanItEdit</b><span>105 hand-crafted tasks, each with <i>Lazy</i> and <i>Descriptive</i> instructions</span></div>
-          <div><b>EditEval</b><span>194 tasks from GitHub commits, HumanEval, and MBPP</span></div>
-        </div>
-        <p class="note">GPT-4.1 in both conditions; Pass@1 against each benchmark's ground-truth unit tests</p>
       </div>
       <figure class="fig benchfig" data-r style="--d:1">
         <img src="figures/paper/datasets-result.svg" alt="Pass@1 across granularity levels on CanItEdit Lazy, CanItEdit Descriptive, and EditEval">
+        <figcaption>CanItEdit and EditEval · GPT-4.1 in both conditions · Pass@1 against ground-truth unit tests</figcaption>
       </figure>
     </div>
 
@@ -349,12 +345,10 @@
       <div class="res" data-r style="--d:2">
         <div class="res-h"><span class="stat">−1.92<small>%</small></span><span>average vs. Direct Instruction<br><span class="note">maximum −8.98%</span></span></div>
         <h3>Comparable correctness</h3>
-        <p class="small">Errors arose when the NL representation omitted or simplified key semantics, such as boundary conditions: a trade-off between NL readability and semantic precision.</p>
       </div>
       <div class="res gold-l" data-r style="--d:3">
         <div class="res-h"><span class="stat gold">+0.48<small>%</small></span><span>on <i>Lazy</i> instructions<br><span class="note">vs. −4.45% on <i>Descriptive</i></span></span></div>
         <h3>More robust to vague instructions</h3>
-        <p class="small">Grounding vague intent in an explicit NL representation reduces the risk of underspecification.</p>
       </div>
     </div>
   </div>
