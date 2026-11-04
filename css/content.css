@@ -432,10 +432,12 @@ a.venue-tag i { margin-left: 3px; font-size: 0.8em; }
 .n-right { left: 355px; top: 292px; }
 .tri-c { position: absolute; left: 0; right: 0; top: 196px; text-align: center; font-size: 19px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--nd-gold-dark); }
 
-.spec-right { gap: 16px; }
+.spec-right { gap: 30px; }
+.sp .fn { background: #fff; border: 2px solid var(--nd-blue); color: var(--nd-blue); }
+.brand { margin: 0 6px 0 2px; color: var(--ink); }
 .sp { display: flex; gap: 18px; align-items: center; }
-.sp b { font-size: 23px; }
-.sp .small { margin: 2px 0 0; font-size: 20px; }
+.sp b { font-size: 26px; }
+.sp .small { margin: 4px 0 0; font-size: 22px; }
 .punch { margin: 8px 0 0; padding: 14px 20px; border-left: 4px solid var(--nd-blue); border-radius: 4px 12px 12px 4px; background: var(--sky-light); font-size: 21px; line-height: 1.45; color: var(--nd-blue); }
 
 /* ------------------------------------------------------------ closing */
