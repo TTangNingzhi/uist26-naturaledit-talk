@@ -181,7 +181,7 @@ a.venue-tag i { margin-left: 3px; font-size: 0.8em; }
 .opp-ide .doc .ln { margin-left: calc(-34px - 4ch); }
 .opp-ide .dim { opacity: 0.38; }
 
-.opp-right { gap: 18px; justify-content: center; }
+.opp-right { gap: 30px; justify-content: center; }
 
 .cover { padding: 20px 26px; }
 .cov { display: flex; align-items: center; justify-content: space-between; padding: 9px 0; border-top: 1px solid var(--line-soft); font-size: 22px; }
@@ -192,10 +192,10 @@ a.venue-tag i { margin-left: 3px; font-size: 0.8em; }
 .cov .yes { color: var(--nd-blue-bright); }
 .cov .no { color: var(--muted); font-weight: 600; }
 
-.shift { display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; }
-.shift .from { font-size: 21px; color: var(--muted); }
-.shift i { color: var(--nd-gold); font-size: 22px; }
-.shift .to { font-size: 25px; font-weight: 700; color: var(--nd-blue); }
+.shift { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; }
+.shift .from { font-size: 25px; color: var(--muted); text-decoration: line-through; text-decoration-color: rgba(87, 93, 101, 0.5); }
+.shift i { color: var(--nd-gold); font-size: 30px; }
+.shift .to { padding: 14px 24px; border: 2px solid var(--nd-gold); border-radius: 14px; background: var(--warm-light); white-space: nowrap; font-size: 26px; font-weight: 700; line-height: 1.25; color: var(--nd-blue); }
 
 
 /* ------------------------------------------------------------ design goals */
