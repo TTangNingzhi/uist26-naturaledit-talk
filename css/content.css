@@ -65,16 +65,18 @@ a.venue-tag i { margin-left: 3px; font-size: 0.8em; }
 
 /* ---------------------------------------------------------------- title */
 
-.s-title { padding: 64px 90px 60px; }
+/* the whole group is centered on the page by the stage's flex column */
+.s-title { justify-content: center; padding: 0 90px; }
 
-.s-title .uist-top { position: absolute; top: 72px; left: 90px; height: 80px; }
+.t-main { position: relative; }
+.t-left { position: relative; z-index: 1; }
 
-.s-title .title-block { position: relative; z-index: 1; margin-top: 208px; }
+.s-title .uist-top { display: block; height: 96px; }
 
 .s-title h1 {
   display: flex;
   align-items: center;
-  margin: 0;
+  margin: 50px 0 0;
   white-space: nowrap;
   font-size: 96px;
   font-weight: 700;
@@ -88,9 +90,9 @@ a.venue-tag i { margin-left: 3px; font-size: 0.8em; }
 .s-title .subtitle { max-width: 780px; margin: 28px 0 0; font-size: 34px; line-height: 1.3; color: var(--ink); }
 .s-title .authors { margin: 52px 0 0; white-space: nowrap; font-size: 26px; line-height: 1.4; color: var(--ink-2); }
 .s-title .authors b { color: var(--ink); }
-.s-title .mail { margin: 8px 0 0; font-family: var(--mono); font-size: 17px; color: var(--muted); }
+.s-title .mail { margin: 8px 0 0; font-family: var(--mono); font-size: 19px; color: var(--muted); }
 
-.hero { position: absolute; top: 134px; right: 90px; width: 640px; height: 400px; }
+.hero { position: absolute; top: 0; right: 0; width: 640px; height: 360px; }
 .hero-card { position: absolute; padding: 12px; border: 1px solid var(--line); border-radius: 16px; background: #fff; box-shadow: 0 18px 44px rgba(12, 35, 64, 0.12); }
 .hero-card .crop { position: relative; overflow: hidden; }
 .hero-card img { position: absolute; max-width: none; }
@@ -105,15 +107,7 @@ a.venue-tag i { margin-left: 3px; font-size: 0.8em; }
 .hero-card.front .crop { width: 430px; height: 130px; }
 .hero-card.front img { width: 1277px; left: -250px; top: 0; }
 
-.s-title .logos {
-  position: absolute;
-  left: 90px;
-  right: 90px;
-  bottom: 72px;
-  display: flex;
-  align-items: center;
-  gap: 48px;
-}
+.s-title .logos { display: flex; align-items: center; gap: 48px; margin-top: 104px; }
 
 /* ------------------------------------------------------------ motivation */
 
