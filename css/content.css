@@ -200,8 +200,13 @@ a.venue-tag i { margin-left: 3px; font-size: 0.8em; }
 
 /* --------------------------------------------------------- formative study */
 
+.lead-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 36px; }
+.lead-row .lead { max-width: 1010px; }
+.pub { flex: none; padding: 6px 14px; border: 1.5px solid var(--nd-gold); border-radius: 999px; background: var(--warm-light); font-size: 17px; color: var(--nd-gold-dark); text-decoration: none; white-space: nowrap; }
+.pub i { margin-left: 4px; font-size: 0.8em; }
+
 .s-form { gap: 34px; align-items: center; padding-bottom: 10px; }
-.form-left { flex: none; width: 580px; gap: 18px; }
+.form-left { flex: none; width: 560px; gap: 18px; }
 .proto { margin: 0; }
 .proto img { display: block; width: 100%; border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 14px 34px rgba(12, 35, 64, 0.1); }
 .pro { display: flex; align-items: flex-start; gap: 14px; padding: 14px 20px; border-radius: 12px; background: var(--sky-light); }
@@ -209,9 +214,9 @@ a.venue-tag i { margin-left: 3px; font-size: 0.8em; }
 .pro p { margin: 0; font-size: 20px; line-height: 1.45; color: var(--ink-2); }
 
 .needs { gap: 14px; }
-.needs-h { display: grid; grid-template-columns: 1.35fr 26px 1fr; gap: 14px; font-size: 15px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.needs-h { display: grid; grid-template-columns: 1.55fr 26px 1fr; gap: 14px; font-size: 15px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
 .needs-h span:last-child { grid-column: 3; color: var(--nd-blue-bright); }
-.need { display: grid; grid-template-columns: 1.35fr 26px 1fr; align-items: center; gap: 14px; }
+.need { display: grid; grid-template-columns: 1.55fr 26px 1fr; align-items: center; gap: 14px; }
 .need > i { text-align: center; color: var(--nd-gold); }
 .nd-gap { display: flex; align-items: center; gap: 14px; min-height: 98px; padding: 12px 18px; border-radius: 12px; background: #f6f7f9; font-size: 18px; line-height: 1.35; color: var(--ink-2); }
 .nd-gap b { display: block; font-size: 20px; color: var(--ink); }
