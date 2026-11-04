@@ -132,6 +132,7 @@ a.venue-tag i { margin-left: 3px; font-size: 0.8em; }
 .sem p b { font-style: normal; }
 .sem-src { flex: none; font-size: 17px; color: var(--muted); }
 .sem b { color: var(--nd-blue); }
+.is { font-style: normal; font-weight: 700; color: var(--nd-blue); background: linear-gradient(transparent 55%, rgba(211, 159, 16, 0.35) 55%); padding: 0 2px; }
 
 .stages { display: grid; grid-template-columns: 1fr 48px 1fr 48px 1fr; margin-top: 30px; }
 
@@ -175,14 +176,14 @@ a.venue-tag i { margin-left: 3px; font-size: 0.8em; }
 
 .opp-ide { flex: none; width: 700px; align-self: center; }
 .opp-ide .py { padding: 14px 16px 16px 6px; font-size: 14px; line-height: 1.7; }
-.opp-ide .doc { display: block; margin: 2px 0 2px 34px; padding: 0 10px 0 0; border: 2px solid var(--nd-gold); border-radius: 8px; background: var(--warm-light); }
-.opp-ide .doc .ln { margin-left: -34px; }
+/* box hugs the docstring text; line numbers hang outside it in the gutter */
+.opp-ide .doc { display: inline-block; margin: 3px 0; margin-left: calc(34px + 4ch - 10px); padding: 1px 8px; border: 2px solid var(--nd-gold); border-radius: 8px; background: var(--warm-light); }
+.opp-ide .doc .ln { margin-left: calc(-34px - 4ch); }
 .opp-ide .dim { opacity: 0.38; }
 
 .opp-right { gap: 18px; justify-content: center; }
 
 .cover { padding: 20px 26px; }
-.cover h4 { margin-bottom: 8px !important; }
 .cov { display: flex; align-items: center; justify-content: space-between; padding: 9px 0; border-top: 1px solid var(--line-soft); font-size: 22px; }
 .cov:first-of-type { border-top: 0; }
 .cov > span { display: flex; align-items: center; gap: 12px; }
