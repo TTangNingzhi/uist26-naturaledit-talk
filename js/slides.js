@@ -1,4 +1,4 @@
-// Slide deck runtime: scaling, keyboard paging, outline rail, reveal-on-arrival.
+// Slide deck runtime: scaling, keyboard paging, outline rail, reveal-on-arrival, step-through slides.
 // Keys: ↓ → Space PgDn next · ↑ ← PgUp previous · Home/End · O outline · F fullscreen
 
 (() => {
@@ -66,6 +66,24 @@
     setActive(i);
   }
 
+  // step-through slides ([data-steps]): next/previous keys walk the steps before paging;
+  // [data-show="0 2"] elements appear on the listed steps, [data-go="n"] buttons jump to a step
+  const steppers = new Map();
+  slides.forEach((s) => {
+    const box = s.querySelector('[data-steps]');
+    if (!box) return;
+    const set = (k) => {
+      box.dataset.step = k;
+      box.querySelectorAll('[data-show]').forEach((el) => {
+        el.hidden = !el.dataset.show.split(' ').includes(String(k));
+      });
+      box.querySelectorAll('[data-go]').forEach((b) => b.classList.toggle('on', +b.dataset.go === k));
+    };
+    box.querySelectorAll('[data-go]').forEach((b) => b.addEventListener('click', () => set(+b.dataset.go)));
+    set(0);
+    steppers.set(s, { n: +box.dataset.steps, step: () => +box.dataset.step, set });
+  });
+
   // track the slide in view when the user scrolls with a trackpad or wheel
   const io = new IntersectionObserver(
     (entries) => {
@@ -80,8 +98,14 @@
   document.addEventListener('keydown', (e) => {
     if (e.metaKey || e.ctrlKey || e.altKey) return;
     const k = e.key;
-    if (['ArrowDown', 'ArrowRight', 'PageDown', ' '].includes(k)) go(current + 1);
-    else if (['ArrowUp', 'ArrowLeft', 'PageUp'].includes(k)) go(current - 1);
+    const st = steppers.get(slides[current]);
+    if (['ArrowDown', 'ArrowRight', 'PageDown', ' '].includes(k)) {
+      if (st && st.step() < st.n - 1) st.set(st.step() + 1);
+      else go(current + 1);
+    } else if (['ArrowUp', 'ArrowLeft', 'PageUp'].includes(k)) {
+      if (st && st.step() > 0) st.set(st.step() - 1);
+      else go(current - 1);
+    }
     else if (k === 'Home') go(0);
     else if (k === 'End') go(total - 1);
     else if (k === 'o' || k === 'O') {
@@ -104,33 +128,32 @@
     go(current, false);
   });
 
-  // mapping demo (F2): hovering a summary segment highlights its code lines
-  document.querySelectorAll('[data-map]').forEach((box) => {
-    const segs = [...box.querySelectorAll('[data-seg]')];
-    const lines = [...box.querySelectorAll('[data-lines]')];
-    const show = (k) => {
-      box.dataset.on = k;
-      segs.forEach((s) => s.classList.toggle('on', s.dataset.seg === k));
-      lines.forEach((l) => l.classList.toggle('on', l.dataset.lines.split(' ').includes(k)));
+  // live demo slide: the recorded clip (works offline) or the public YouTube video
+  document.querySelectorAll('[data-demo]').forEach((box) => {
+    const slide = box.closest('.slide');
+    const video = box.querySelector('video');
+    const yt = box.querySelector('iframe');
+    const buttons = slide.querySelectorAll('[data-mode]');
+    const id = yt.dataset.youtube.trim();
+    const set = (mode) => {
+      box.dataset.mode = mode;
+      buttons.forEach((b) => b.classList.toggle('on', b.dataset.mode === mode));
+      if (mode === 'youtube') {
+        video.pause();
+        if (id && !yt.src) {
+          yt.src = `https://www.youtube-nocookie.com/embed/${id}?start=${yt.dataset.start}&end=${yt.dataset.end}&rel=0`;
+        }
+      }
     };
-    segs.forEach((s) => s.addEventListener('mouseenter', () => show(s.dataset.seg)));
-    show(box.dataset.map);
+    box.dataset.yt = id ? 'set' : 'missing';
+    buttons.forEach((b) => b.addEventListener('click', () => set(b.dataset.mode)));
+    // default to the clip; fall back to YouTube when the file is not there (e.g., a hosted copy)
+    set('clip');
+    if (video.error) set('youtube');
+    video.addEventListener('error', () => set('youtube'));
+    // never autoplay (the live demo comes first); pause when leaving the slide
+    slides.forEach((s) => s !== slide && s.addEventListener('slide:enter', () => video.pause()));
   });
-
-  // demo video: shown only once the file exists; plays on arrival, pauses on leave
-  const videos = [...document.querySelectorAll('video.demo-video')];
-  videos.forEach((v) => {
-    const reveal = () => { v.hidden = false; v.closest('.demo-box')?.classList.add('has-video'); };
-    if (v.readyState >= 1) reveal();
-    else v.addEventListener('loadedmetadata', reveal);
-  });
-  slides.forEach((s) =>
-    s.addEventListener('slide:enter', () => {
-      videos.forEach((v) => {
-        if (s.contains(v)) { if (!v.hidden) v.play().catch(() => {}); } else v.pause();
-      });
-    }),
-  );
 
   fit();
   const start = parseInt(location.hash.slice(1), 10);

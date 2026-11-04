@@ -12,7 +12,7 @@
 
 <aside class="rail">
   <div class="rail-brand">
-    <img class="venue" src="figures/logos/uist-2026-horizontal.svg" alt="UIST 2026 Detroit">
+    <img class="venue" src="figures/logos/uist-2026.svg" alt="UIST 2026 Detroit">
     <img class="lab" src="figures/logos/sandwich.svg" alt="SaNDwich Lab">
   </div>
   <nav class="rail-nav"></nav>
@@ -32,7 +32,7 @@
 <section class="slide" data-title="Title" data-group="Introduction">
 <div class="frame"><div class="stage s-title">
 
-  <img class="uist-logo" src="figures/logos/uist-2026.svg" alt="UIST 2026 Detroit">
+  <img class="uist-logo" src="figures/logos/uist-2026-horizontal.svg" alt="UIST 2026 Detroit">
 
   <div class="title-block">
     <h1><img class="ne-icon" src="figures/logos/naturaledit.svg" alt=""><span class="gold-word">Natural</span>Edit</h1>
@@ -155,11 +155,6 @@
         <i class="fa-solid fa-arrow-down"></i>
         <span class="to">An interactive representation for code modification</span>
       </div>
-
-      <div class="prior" data-r style="--d:3">
-        <div class="prior-h"><i class="fa-solid fa-flask"></i> Our prior study with 15 developers <span class="venue-tag">VL/HCC '25</span></div>
-        <p>Modifying summaries can prompt code changes, but the workflow exhibits <b>overly rigid representations</b>, <b>implicit NL-code links</b>, and <b>disproportionate editing effort</b>.</p>
-      </div>
     </div>
   </div>
 
@@ -172,30 +167,30 @@
 <div class="frame"><div class="stage">
   <div class="eyebrow">Design goals</div>
   <h2 class="title">Four gaps through the <em>Cognitive Dimensions of Notations</em></h2>
-  <p class="lead">Analyzing NL-mediated workflows through this framework, grounded in empirical findings, reveals four gaps.</p>
+  <p class="lead">Grounded in our prior study with 15 developers <a class="venue-tag link" href="https://arxiv.org/abs/2508.01523" target="_blank" rel="noopener">VL/HCC '25 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>, this framework reveals four gaps.</p>
 
   <div class="body s-dg">
     <div class="dg" data-r>
       <div class="dim-name">Abstraction Gradient</div>
-      <div class="gap"><i class="fa-solid fa-lock"></i><p>A fixed abstraction gradient that cannot adapt across cognitive tasks</p></div>
+      <div class="gap"><i class="fa-solid fa-lock"></i><p>A fixed abstraction gradient that cannot adapt across cognitive tasks</p><div class="obs">In our study: overly rigid representations</div></div>
       <div class="dg-arrow"><i class="fa-solid fa-arrow-down"></i></div>
       <div class="goal"><span class="tag">DG1</span>Enable an adaptive abstraction gradient</div>
     </div>
     <div class="dg" data-r style="--d:1">
       <div class="dim-name">Closeness of Mapping</div>
-      <div class="gap"><i class="fa-solid fa-link-slash"></i><p>Implicit NL-code links burden working memory</p></div>
+      <div class="gap"><i class="fa-solid fa-link-slash"></i><p>Implicit NL-code links burden working memory</p><div class="obs">In our study: implicit NL-code links</div></div>
       <div class="dg-arrow"><i class="fa-solid fa-arrow-down"></i></div>
       <div class="goal"><span class="tag">DG2</span>Ensure tight and interactive mapping</div>
     </div>
     <div class="dg" data-r style="--d:2">
       <div class="dim-name">Viscosity</div>
-      <div class="gap"><i class="fa-solid fa-pencil"></i><p>High effort in translating vague intent into precise summary edits</p></div>
+      <div class="gap"><i class="fa-solid fa-pencil"></i><p>High effort in translating vague intent into precise summary edits</p><div class="obs">In our study: disproportionate editing effort</div></div>
       <div class="dg-arrow"><i class="fa-solid fa-arrow-down"></i></div>
       <div class="goal"><span class="tag">DG3</span>Minimize viscosity in intent specification</div>
     </div>
     <div class="dg" data-r style="--d:3">
       <div class="dim-name">Visibility &amp; Consistency</div>
-      <div class="gap"><i class="fa-solid fa-eye-slash"></i><p>Summaries regenerated without surfacing inspectable diffs</p></div>
+      <div class="gap"><i class="fa-solid fa-eye-slash"></i><p>Summaries regenerated without surfacing inspectable diffs</p><div class="obs">In our study: summaries fully regenerated after edits</div></div>
       <div class="dg-arrow"><i class="fa-solid fa-arrow-down"></i></div>
       <div class="goal"><span class="tag">DG4</span>Maintain high visibility and consistency</div>
     </div>
@@ -254,29 +249,12 @@
 <div class="frame"><div class="stage">
   <div class="eyebrow"><span class="rq">F1</span>Abstraction gradient</div>
   <h2 class="title"><span class="hl">Adaptive</span> multi-faceted representation</h2>
+  <p class="lead">NL summaries adjustable along two orthogonal dimensions: <b>Structure</b> and <b>Granularity</b>.</p>
 
   <div class="body row s-f1">
-    <div class="sg" data-r>
-      <div class="sg-title">Filter and Format Long-Term Active Users</div>
-      <div class="sg-grid">
-        <div class="sg-corner"></div>
-        <div class="sg-col"><i class="fa-regular fa-square"></i> Paragraph</div>
-        <div class="sg-col"><i class="fa-regular fa-square-check"></i> Bulleted</div>
-
-        <div class="sg-row"><b>Low</b><span>overview</span></div>
-        <div class="sg-cell">This function filters active users who joined over a year ago and returns their names and emails.</div>
-        <div class="sg-cell"><ul><li>Filter for users marked as active</li><li>Select those who joined over a year ago</li><li>Return the formatted list of names and emails</li></ul></div>
-
-        <div class="sg-row"><b>Medium</b><span>procedural</span></div>
-        <div class="sg-cell">The function filters user dictionaries to find those who are active and have been members for over a year. It then formats each qualifying user's name and email into a string. The result is a list of these strings.</div>
-        <div class="sg-cell"><ul><li>Filters the list to include only users with 'active' status</li><li>Selects active users who joined over a year ago.</li><li>Formats each qualifying user's info as "Name &lt;email&gt;"<ul><li>Collects the formatted strings into a results list</li></ul></li><li>Returns the list of these strings</li></ul></div>
-
-        <div class="sg-row"><b>High</b><span>line-by-line</span></div>
-        <div class="sg-cell">This function filters a list of user dictionaries to include only those whose 'status' is 'active'. It then calculates the date one year prior to the current time and selects active users who joined before this threshold as long-term users. For each long-term active user, it formats a string as "Name &lt;email&gt;" and adds it to a result list, which the function returns.</div>
-        <div class="sg-cell"><ul><li>Takes a list of user dictionaries as input</li><li>Keep only users whose 'status' is 'active'</li><li>Calculates the date one year before today</li><li>Selects active users who joined before that date<ul><li>Identifies these as long-term active users</li></ul></li><li>For each long-term active user:<ul><li>Formats as "Name &lt;email&gt;" and appends to results</li></ul></li><li>Returns the list of formatted strings</li></ul></div>
-      </div>
-      <div class="sg-ax-y">Granularity <i class="fa-solid fa-arrow-down"></i></div>
-    </div>
+    <figure class="fig f1fig" data-r>
+      <img src="figures/paper/structure-granularity.svg" alt="Six NL representations of one function: paragraph or bulleted, at low, medium, or high granularity">
+    </figure>
 
     <div class="col grow f1-notes">
       <div class="card" data-r style="--d:1">
@@ -301,41 +279,123 @@
 <div class="frame"><div class="stage">
   <div class="eyebrow"><span class="rq">F2</span>Closeness of mapping</div>
   <h2 class="title"><span class="hl">Interactive</span> cross-representation mapping</h2>
-  <p class="lead"><b>Hovering</b> over an NL segment highlights its code; <b>clicking</b> navigates to and selects that scope.</p>
+  <p class="lead">Each NL representation is segmented into semantic units, explicitly linked to the code they describe.</p>
 
-  <div class="body row s-f2">
-    <div class="map" data-map="b" data-r>
-      <div class="map-sum">
-        <div class="map-ctl"><i class="fa-regular fa-square"></i> Structured <span>Granularity</span><i class="tg"></i></div>
-        <p>The function <span class="seg" data-seg="a">filters a list of users to find those who are currently active</span> and <span class="seg" data-seg="b">have been members for more than a year</span>. It then <span class="seg" data-seg="c">formats each qualifying user's name and email into a string</span>. <span class="seg" data-seg="d">The result is a list of these strings.</span></p>
+  <div class="body s-f2">
+    <figure class="fig mapfig" data-r>
+      <img src="figures/paper/interactive-mapping.svg" alt="As the cursor moves from one summary segment to the next, the highlighted code lines update">
+    </figure>
+    <div class="map-notes">
+      <div class="mn" data-r style="--d:1"><div class="icon-badge"><i class="fa-solid fa-arrow-pointer"></i></div><div><h3>Hover and click</h3><p class="small">Hovering highlights the corresponding code; clicking navigates to and selects that scope, decoupling comprehension from navigation.</p></div></div>
+      <div class="mn" data-r style="--d:2"><div class="icon-badge"><i class="fa-solid fa-diagram-project"></i></div><div><h3>Fine-grained links</h3><p class="small">Generated in parallel for each variant as (<span class="code">summaryComponent</span>, <span class="code">codeSegments</span>) pairs, with line numbers for precise alignment.</p></div></div>
+      <div class="mn" data-r style="--d:3"><div class="icon-badge"><i class="fa-solid fa-anchor"></i></div><div><h3>Structurally stable</h3><p class="small">Links must remain valid as code evolves, which simple text-based anchoring cannot guarantee.</p></div></div>
+    </div>
+  </div>
+
+  <div class="foot"><span class="pg"></span></div>
+</div></div>
+</section>
+
+<!-- ============================================================ AST -->
+<section class="slide" data-title="Structural Alignment" data-group="NaturalEdit">
+<div class="frame"><div class="stage">
+  <div class="eyebrow"><span class="rq">F2</span>Structural alignment engine</div>
+  <h2 class="title">Persistent <span class="hl">AST anchors</span> keep mappings valid as code evolves</h2>
+
+  <div class="body row s-ast" data-steps="4">
+    <div class="ast-left" data-r>
+      <div class="ast-seg"><span class="k">Summary segment</span><span class="seg-chip">formats each qualifying user's name and email into a string</span></div>
+      <div class="ide ast-ide">
+        <div class="ast-tabs">
+          <button data-go="0"><i class="fa-brands fa-python"></i> Original</button>
+          <button data-go="1"><i class="fa-solid fa-align-left"></i> Reformat</button>
+          <button data-go="2"><i class="fa-solid fa-plus"></i> Add helper above</button>
+          <button data-go="3"><i class="fa-solid fa-pen"></i> Rewrite loop</button>
+        </div>
+<pre class="py ast-code" data-show="0"><span class="cl"><span class="ln">1</span><span class="k">def</span> <span class="f">process_user_data</span>(users):</span>
+<span class="cl"><span class="ln">2</span>    active_users = [u <span class="k">for</span> u <span class="k">in</span> users <span class="k">if</span> u[<span class="s">'status'</span>] == <span class="s">'active'</span>]</span>
+<span class="cl"><span class="ln">3</span>    <span class="k">from</span> datetime <span class="k">import</span> datetime, timedelta</span>
+<span class="cl"><span class="ln">4</span>    one_year_ago = datetime.<span class="f">now</span>() - <span class="f">timedelta</span>(days=<span class="n">365</span>)</span>
+<span class="cl"><span class="ln">5</span>    long_term_users = [</span>
+<span class="cl"><span class="ln">6</span>        u <span class="k">for</span> u <span class="k">in</span> active_users <span class="k">if</span> u[<span class="s">'join_date'</span>] &lt; one_year_ago</span>
+<span class="cl"><span class="ln">7</span>    ]</span>
+<span class="cl"><span class="ln">8</span>    results = []</span>
+<span class="cl ref hit"><span class="ln">9</span>    <span class="k">for</span> u <span class="k">in</span> long_term_users:</span>
+<span class="cl ref hit"><span class="ln">10</span>        results.<span class="f">append</span>(<span class="s">f"{u['name']} &lt;{u['email']}&gt;"</span>)</span>
+<span class="cl"><span class="ln">11</span>    <span class="k">return</span> results</span></pre>
+<pre class="py ast-code" data-show="1"><span class="cl"><span class="ln">1</span><span class="k">def</span> <span class="f">process_user_data</span>(users):</span>
+<span class="cl chg"><span class="ln">2</span>    active_users = [</span>
+<span class="cl chg"><span class="ln">3</span>        u <span class="k">for</span> u <span class="k">in</span> users <span class="k">if</span> u[<span class="s">'status'</span>] == <span class="s">'active'</span></span>
+<span class="cl chg"><span class="ln">4</span>    ]</span>
+<span class="cl"><span class="ln">5</span>    <span class="k">from</span> datetime <span class="k">import</span> datetime, timedelta</span>
+<span class="cl"><span class="ln">6</span>    one_year_ago = datetime.<span class="f">now</span>() - <span class="f">timedelta</span>(days=<span class="n">365</span>)</span>
+<span class="cl"><span class="ln">7</span>    long_term_users = [</span>
+<span class="cl"><span class="ln">8</span>        u <span class="k">for</span> u <span class="k">in</span> active_users <span class="k">if</span> u[<span class="s">'join_date'</span>] &lt; one_year_ago</span>
+<span class="cl ref bad"><span class="ln">9</span>    ]</span>
+<span class="cl ref bad"><span class="ln">10</span>    results = []</span>
+<span class="cl hit"><span class="ln">11</span>    <span class="k">for</span> u <span class="k">in</span> long_term_users:</span>
+<span class="cl hit"><span class="ln">12</span>        results.<span class="f">append</span>(<span class="s">f"{u['name']} &lt;{u['email']}&gt;"</span>)</span>
+<span class="cl"><span class="ln">13</span>    <span class="k">return</span> results</span></pre>
+<pre class="py ast-code" data-show="2"><span class="cl chg"><span class="ln">1</span><span class="k">def</span> <span class="f">format_user</span>(u):</span>
+<span class="cl chg"><span class="ln">2</span>    <span class="k">return</span> <span class="s">f"{u['name']} &lt;{u['email']}&gt;"</span></span>
+<span class="cl chg"><span class="ln">3</span></span>
+<span class="cl"><span class="ln">4</span><span class="k">def</span> <span class="f">process_user_data</span>(users):</span>
+<span class="cl"><span class="ln">5</span>    active_users = [u <span class="k">for</span> u <span class="k">in</span> users <span class="k">if</span> u[<span class="s">'status'</span>] == <span class="s">'active'</span>]</span>
+<span class="cl"><span class="ln">6</span>    <span class="k">from</span> datetime <span class="k">import</span> datetime, timedelta</span>
+<span class="cl"><span class="ln">7</span>    one_year_ago = datetime.<span class="f">now</span>() - <span class="f">timedelta</span>(days=<span class="n">365</span>)</span>
+<span class="cl"><span class="ln">8</span>    long_term_users = [</span>
+<span class="cl ref bad"><span class="ln">9</span>        u <span class="k">for</span> u <span class="k">in</span> active_users <span class="k">if</span> u[<span class="s">'join_date'</span>] &lt; one_year_ago</span>
+<span class="cl ref bad"><span class="ln">10</span>    ]</span>
+<span class="cl"><span class="ln">11</span>    results = []</span>
+<span class="cl hit"><span class="ln">12</span>    <span class="k">for</span> u <span class="k">in</span> long_term_users:</span>
+<span class="cl hit chg-in"><span class="ln">13</span>        results.<span class="f">append</span>(<span class="f">format_user</span>(u))</span>
+<span class="cl"><span class="ln">14</span>    <span class="k">return</span> results</span></pre>
+<pre class="py ast-code" data-show="3"><span class="cl"><span class="ln">1</span><span class="k">def</span> <span class="f">process_user_data</span>(users):</span>
+<span class="cl"><span class="ln">2</span>    active_users = [u <span class="k">for</span> u <span class="k">in</span> users <span class="k">if</span> u[<span class="s">'status'</span>] == <span class="s">'active'</span>]</span>
+<span class="cl"><span class="ln">3</span>    <span class="k">from</span> datetime <span class="k">import</span> datetime, timedelta</span>
+<span class="cl"><span class="ln">4</span>    one_year_ago = datetime.<span class="f">now</span>() - <span class="f">timedelta</span>(days=<span class="n">365</span>)</span>
+<span class="cl"><span class="ln">5</span>    long_term_users = [</span>
+<span class="cl"><span class="ln">6</span>        u <span class="k">for</span> u <span class="k">in</span> active_users <span class="k">if</span> u[<span class="s">'join_date'</span>] &lt; one_year_ago</span>
+<span class="cl"><span class="ln">7</span>    ]</span>
+<span class="cl chg"><span class="ln">8</span>    <span class="k">return</span> [<span class="s">f"{u['name']} &lt;{u['email']}&gt;"</span></span>
+<span class="cl ref bad chg"><span class="ln">9</span>            <span class="k">for</span> u <span class="k">in</span> long_term_users]</span></pre>
       </div>
-<pre class="py map-code"><span class="cl" data-lines=""><span class="ln">1</span><span class="k">def</span> <span class="f">process_user_data</span>(users):</span>
-<span class="cl" data-lines="a"><span class="ln">2</span>    active_users = [u <span class="k">for</span> u <span class="k">in</span> users <span class="k">if</span> u[<span class="s">'status'</span>] == <span class="s">'active'</span>]</span>
-<span class="cl" data-lines=""><span class="ln">3</span>    <span class="k">from</span> datetime <span class="k">import</span> datetime, timedelta</span>
-<span class="cl" data-lines="b"><span class="ln">4</span>    one_year_ago = datetime.<span class="f">now</span>() - <span class="f">timedelta</span>(days=<span class="n">365</span>)</span>
-<span class="cl" data-lines="b"><span class="ln">5</span>    long_term_users = [</span>
-<span class="cl" data-lines="b"><span class="ln">6</span>        u <span class="k">for</span> u <span class="k">in</span> active_users <span class="k">if</span> u[<span class="s">'join_date'</span>] &lt; one_year_ago</span>
-<span class="cl" data-lines=""><span class="ln">7</span>    ]</span>
-<span class="cl" data-lines="d"><span class="ln">8</span>    results = []</span>
-<span class="cl" data-lines="c"><span class="ln">9</span>    <span class="k">for</span> u <span class="k">in</span> long_term_users:</span>
-<span class="cl" data-lines="c"><span class="ln">10</span>        results.<span class="f">append</span>(<span class="s">f"{u['name']} &lt;{u['email']}&gt;"</span>)</span>
-<span class="cl" data-lines="d"><span class="ln">11</span>    <span class="k">return</span> results</span></pre>
-      <div class="map-hint"><i class="fa-solid fa-arrow-pointer"></i> Hover a segment to try it</div>
+      <div class="ast-legend">
+        <span><i class="sw hit"></i> Resolved by the AST anchor</span>
+        <span><i class="sw ref"></i> Line-number reference (lines 9 and 10)</span>
+        <span class="hint"><i class="fa-solid fa-arrow-right"></i> to step through edits</span>
+      </div>
     </div>
 
-    <div class="card col grow ast" data-r style="--d:1">
-      <h4>AST-driven structural alignment</h4>
-      <p class="small">Links must stay valid as code evolves. Volatile line numbers are replaced with persistent <b>AST anchors</b> (Tree-sitter):</p>
-      <div class="anchor">
-        <div class="a-k">Structural path</div>
-        <div class="path"><span>module</span><i class="fa-solid fa-chevron-right"></i><span>function_definition</span><i class="fa-solid fa-chevron-right"></i><span>for_statement</span></div>
-        <div class="a-k">Target identity</div>
+    <div class="col grow ast-right">
+      <div class="card anchor-card" data-r style="--d:1">
+        <h4><i class="fa-solid fa-anchor"></i> AST anchor (Tree-sitter)</h4>
+        <div class="a-k">1 · Structural path <span>type, name, sibling index per level</span></div>
+        <div class="path">
+          <span>module</span><i class="fa-solid fa-chevron-right"></i>
+          <span>function_definition <b>process_user_data</b> <em data-show="0 1 3">#0</em><em class="moved" data-show="2">#0 → #1</em></span><i class="fa-solid fa-chevron-right"></i>
+          <span data-show="0 1 2">for_statement</span><span class="gone" data-show="3">for_statement</span>
+        </div>
+        <div class="a-k">2 · Target identity <span>minimal enclosing node</span></div>
         <div class="path"><span>type</span><span>name</span><span>content hash</span></div>
+        <p class="note">Re-resolved by scoring candidates as <span class="m">s<sub>path</sub> · s<sub>target</sub></span>, matching each level by type, then name, then position.</p>
       </div>
-      <p class="small">Re-resolved by scoring candidates as <span class="m">s<sub>path</sub> · s<sub>target</sub></span>, matching by type, then name, then position.</p>
-      <div class="states">
-        <div><span class="pill blue">Valid</span><span class="note">Formatting changes leave anchors intact; moves and renames are re-resolved</span></div>
-        <div><span class="pill gold">Outdated</span><span class="note">Flagged in the UI when anchors cannot be re-resolved</span></div>
+
+      <div class="verdicts" data-r style="--d:2">
+        <div class="vd">
+          <div class="vk">Line numbers</div>
+          <div class="vv ok" data-show="0"><i class="fa-solid fa-circle-check"></i> Lines 9 and 10 hold the loop</div>
+          <div class="vv bad" data-show="1"><i class="fa-solid fa-circle-xmark"></i> Lines 9 and 10 now point to <span class="code">]</span> and <span class="code">results = []</span></div>
+          <div class="vv bad" data-show="2"><i class="fa-solid fa-circle-xmark"></i> Lines 9 and 10 now point to the filter</div>
+          <div class="vv bad" data-show="3"><i class="fa-solid fa-circle-xmark"></i> Line 9 is now a comprehension; line 10 no longer exists</div>
+        </div>
+        <div class="vd">
+          <div class="vk">AST anchor</div>
+          <div class="vv" data-show="0"><span class="pill blue">Valid</span> The path resolves to the loop</div>
+          <div class="vv" data-show="1"><span class="pill blue">Valid</span> Formatting leaves the structural path, and all anchors, intact</div>
+          <div class="vv" data-show="2"><span class="pill blue">Valid</span> Moved among siblings: re-resolved by type and name, position is only the tie-breaker</div>
+          <div class="vv" data-show="3"><span class="pill gold">Outdated</span> No loop left to resolve: flagged in the UI, prompting a refresh</div>
+        </div>
       </div>
     </div>
   </div>
@@ -379,48 +439,98 @@
 </section>
 
 <!-- ============================================================ DEMO -->
-<section class="slide" data-title="Demo" data-group="NaturalEdit">
-<div class="frame"><div class="stage s-live">
+<section class="slide" data-title="Live Demo" data-group="NaturalEdit">
+<div class="frame"><div class="stage s-demo">
   <div class="live-head">
     <div>
-      <div class="eyebrow">Demo</div>
-      <h2 class="title">Grouping long-term active users by email domain</h2>
+      <div class="eyebrow">Live demo</div>
+      <h2 class="title"><span class="gold-word">Natural</span>Edit in VS Code</h2>
+    </div>
+    <div class="modes">
+      <button data-mode="clip"><i class="fa-solid fa-film"></i> Recorded clip</button>
+      <button data-mode="youtube"><i class="fa-brands fa-youtube"></i> YouTube</button>
     </div>
   </div>
-  <div class="live-box demo-box">
-    <img class="live-fallback" src="figures/paper/example-workflow.svg" alt="NaturalEdit interface during the example workflow, steps A to F">
-    <video class="demo-video" src="figures/demo.mp4" preload="metadata" controls muted playsinline hidden></video>
-    <div class="placeholder-tag"><i class="fa-solid fa-film"></i> Placeholder: add figures/demo.mp4 to replace this figure</div>
+  <div class="live-box demo-box" data-demo>
+    <video class="demo-video" src="figures/demo.mp4" poster="figures/demo-poster.jpg" preload="auto" controls playsinline></video>
+    <!-- set data-youtube to the public video ID; start/end match the clip (1:33 to 3:19) -->
+    <iframe class="demo-yt" data-youtube="" data-start="93" data-end="199" title="NaturalEdit video on YouTube" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <div class="yt-missing"><i class="fa-brands fa-youtube"></i><p>Add the YouTube video ID to <span class="code">data-youtube</span> in index.html</p></div>
   </div>
   <div class="foot"><span class="pg"></span></div>
 </div></div>
 </section>
 
-<!-- ============================================================ TECHNICAL EVALUATION -->
-<section class="slide" data-title="Technical Evaluation" data-group="Evaluation">
+<!-- ============================================================ BENCHMARK -->
+<section class="slide" data-title="Benchmark Evaluation" data-group="Evaluation">
 <div class="frame"><div class="stage">
-  <div class="eyebrow">Technical evaluation</div>
+  <div class="eyebrow"><span class="rq">Technical evaluation</span>Code editing benchmarks</div>
   <h2 class="title">The NL-mediated workflow preserves technical soundness</h2>
 
-  <div class="body row s-tech">
-    <div class="card fcol tech" data-r>
-      <div class="fhead"><div class="icon-badge"><i class="fa-solid fa-vial-circle-check"></i></div><div><div class="fnum">Code editing benchmarks</div><h3>Direct Instruction vs. NL Mediation</h3></div></div>
-      <p class="small">CanItEdit (105 tasks, <i>Lazy</i> and <i>Descriptive</i> instructions) and EditEval (194 tasks), GPT-4.1, Pass@1 against ground-truth unit tests</p>
-      <figure class="fig"><img src="figures/paper/datasets-result.svg" alt="Pass@1 across granularity levels on three benchmarks"></figure>
-      <div class="tk-rows">
-        <div><span class="stat sm">−1.92<small>%</small></span><span class="small">on average vs. Direct Instruction (maximum −8.98%): <b>comparable</b></span></div>
-        <div><span class="stat sm gold">+0.48<small>%</small></span><span class="small">on <i>Lazy</i> (vs. −4.45% on <i>Descriptive</i>): <b>more robust to vague instructions</b></span></div>
+  <div class="body row s-bench">
+    <div class="col bench-left">
+      <div class="card conds" data-r>
+        <div class="cond">
+          <span class="cn">Direct Instruction</span>
+          <div class="flow"><span class="nd">Instruction</span><i class="fa-solid fa-arrow-right"></i><span class="nd">Code</span></div>
+        </div>
+        <div class="cond ours">
+          <span class="cn">NL Mediation</span>
+          <div class="flow"><span class="nd">Instruction</span><i class="fa-solid fa-arrow-right"></i><span class="nd nl">NL summary</span><i class="fa-solid fa-arrow-right"></i><span class="nd">Code</span></div>
+          <span class="note">NaturalEdit's two-step workflow, across six representation variants</span>
+        </div>
+        <div class="sets">
+          <div><b>CanItEdit</b><span>105 hand-crafted tasks, each with <i>Lazy</i> and <i>Descriptive</i> instructions</span></div>
+          <div><b>EditEval</b><span>194 tasks from GitHub commits, HumanEval, and MBPP</span></div>
+        </div>
+        <p class="note">GPT-4.1 in both conditions; Pass@1 against each benchmark's ground-truth unit tests</p>
       </div>
+      <figure class="fig benchfig" data-r style="--d:1">
+        <img src="figures/paper/datasets-result.svg" alt="Pass@1 across granularity levels on CanItEdit Lazy, CanItEdit Descriptive, and EditEval">
+      </figure>
     </div>
 
-    <div class="card fcol tech" data-r style="--d:1">
-      <div class="fhead"><div class="icon-badge"><i class="fa-solid fa-user-check"></i></div><div><div class="fnum">Expert ratings</div><h3>Quality of intermediate NL artifacts</h3></div></div>
-      <p class="small">72 summaries (36 with diffs) and 487 summary-code mappings, rated by two experts on a 5-point scale</p>
-      <figure class="fig"><img src="figures/paper/ratings-result.svg" alt="Expert ratings of summary, mapping, and diff quality across granularity"></figure>
-      <div class="tk-rows">
-        <div><span class="stat sm">42<small>/48</small></span><span class="small">mean scores between 4.5 and 5.0: <b>consistently high quality</b></span></div>
-        <div><span class="stat sm gold">3.75</span><span class="small">diff salience at high-granularity paragraphs: <b>a trade-off between detail and salience</b></span></div>
+    <div class="col grow bench-right">
+      <div class="res" data-r style="--d:2">
+        <div class="res-h"><span class="stat">−1.92<small>%</small></span><span>average vs. Direct Instruction<br><span class="note">maximum −8.98%</span></span></div>
+        <h3>Comparable correctness</h3>
+        <p class="small">Errors arose when the NL representation omitted or simplified key semantics, such as boundary conditions: a trade-off between NL readability and semantic precision.</p>
       </div>
+      <div class="res gold-l" data-r style="--d:3">
+        <div class="res-h"><span class="stat gold">+0.48<small>%</small></span><span>on <i>Lazy</i> instructions<br><span class="note">vs. −4.45% on <i>Descriptive</i></span></span></div>
+        <h3>More robust to vague instructions</h3>
+        <p class="small">Grounding vague intent in an explicit NL representation reduces the risk of underspecification.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot"><span class="pg"></span></div>
+</div></div>
+</section>
+
+<!-- ============================================================ EXPERT RATINGS -->
+<section class="slide" data-title="Expert Ratings" data-group="Evaluation">
+<div class="frame"><div class="stage">
+  <div class="eyebrow"><span class="rq">Technical evaluation</span>Expert ratings</div>
+  <h2 class="title">Intermediate NL artifacts were consistently rated high quality</h2>
+
+  <div class="body row s-expert">
+    <figure class="fig expfig" data-r>
+      <img src="figures/paper/ratings-result.svg" alt="Expert ratings of summary, mapping, and diff quality across granularity, for structured and unstructured variants">
+    </figure>
+
+    <div class="col grow exp-right">
+      <div class="card corpus" data-r style="--d:1">
+        <p class="small"><b>72 summaries</b> (36 with diffs) and <b>487 mappings</b> from the six user-study tasks, rated by two experts on a 5-point scale</p>
+        <div class="crit">
+          <div><span class="ck">Summary</span><span class="pill">Accuracy</span><span class="pill">Clarity</span></div>
+          <div><span class="ck">Mapping</span><span class="pill">Segmentation</span><span class="pill">Accuracy</span><span class="pill">Coverage</span></div>
+          <div><span class="ck">Diff</span><span class="pill">Faithfulness</span><span class="pill">Completeness</span><span class="pill">Salience</span></div>
+        </div>
+      </div>
+      <div class="xr" data-r style="--d:2"><span class="stat sm">42<small>/48</small></span><p class="small">mean scores between 4.5 and 5.0</p></div>
+      <div class="xr" data-r style="--d:3"><span class="stat sm">4.08</span><p class="small"><b>Segmentation</b> dipped for high-granularity paragraphs: consecutive highlights covered nearly identical code</p></div>
+      <div class="xr gold-l" data-r style="--d:4"><span class="stat sm gold">3.75</span><p class="small"><b>Diff salience</b> declined with granularity: many insertions, deletions, and rewordings obscure important changes</p></div>
     </div>
   </div>
 
@@ -604,7 +714,6 @@
       <div class="sp" data-r style="--d:2"><span class="fn">F2</span><div><b>Interactive mapping</b><p class="small">Link spec items to their implementations, making NL documents live and navigable</p></div></div>
       <div class="sp" data-r style="--d:3"><span class="fn">F3</span><div><b>Bidirectional synchronization</b><p class="small">Modify NL to drive code changes while reflecting those changes back</p></div></div>
       <p class="punch" data-r style="--d:4">Developers must verify not only that the code is correct, but also that the NL artifact captures their intent and that the AI's actions remain consistent with it.</p>
-      <p class="src cite" data-r style="--d:4">See also: Programming by Chat <span class="venue-tag">ASE '26</span> How Coding Agents Fail Their Users <span class="venue-tag">EMNLP '26</span></p>
     </div>
   </div>
 
@@ -669,38 +778,6 @@
       <img src="figures/logos/adobe.png" alt="Adobe" style="height:33px">
       <img src="figures/logos/nsf.png" alt="NSF" style="height:56px">
     </div>
-  </div>
-
-</div></div>
-</section>
-
-<!-- ============================================================ ALT TITLE (draft: pick one) -->
-<section class="slide" data-title="Alt Title: Headshots" data-group="Draft">
-<div class="frame"><div class="stage s-title2">
-
-  <img class="uist-h" src="figures/logos/uist-2026-horizontal.svg" alt="UIST 2026 Detroit">
-
-  <h1><img class="ne-icon" src="figures/logos/naturaledit.svg" alt=""><span class="gold-word">Natural</span>Edit</h1>
-  <p class="subtitle">Code Modification through Direct Interaction with Adaptive Natural Language Representation</p>
-
-  <div class="faces">
-    <figure><img src="figures/headshot.jpg" alt=""><figcaption><b>Ningzhi Tang</b></figcaption></figure>
-    <figure><img src="figures/authors/david-meininger.png" alt=""><figcaption>David Meininger</figcaption></figure>
-    <figure><img src="figures/authors/gelei-xu.png" alt="" style="object-position:50% 30%"><figcaption>Gelei Xu</figcaption></figure>
-    <figure><img src="figures/authors/yiyu-shi.png" alt=""><figcaption>Yiyu Shi</figcaption></figure>
-    <figure><img src="figures/authors/yu-huang.png" alt="" style="object-position:50% 30%"><figcaption>Yu Huang</figcaption></figure>
-    <figure><img src="figures/authors/collin-mcmillan.png" alt=""><figcaption>Collin McMillan</figcaption></figure>
-    <figure><img src="figures/authors/toby-li.png" alt=""><figcaption>Toby Jia-Jun Li</figcaption></figure>
-  </div>
-
-  <div class="logos2">
-    <img src="figures/logos/notre-dame.png" alt="University of Notre Dame" style="height:62px">
-    <img src="figures/logos/vanderbilt.png" alt="Vanderbilt University" style="height:58px">
-    <span class="grow"></span>
-    <img class="logo-round" src="figures/logos/sandwich.svg" alt="SaNDwich Lab" style="height:80px">
-    <img src="figures/logos/lab-scl.png" alt="Lab logo" style="height:80px">
-    <img class="logo-round" src="figures/logos/lab-robot.png" alt="Lab logo" style="height:80px">
-    <img class="logo-round" src="figures/logos/lab-mind.png" alt="Lab logo" style="height:80px">
   </div>
 
 </div></div>
