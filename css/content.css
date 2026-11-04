@@ -435,7 +435,8 @@ a.venue-tag i { margin-left: 3px; font-size: 0.8em; }
 
 /* ------------------------------------------------------------ closing */
 
-.s-close { padding: 52px 76px 38px; }
+/* the whole group is centered on the canvas */
+.s-close { justify-content: center; padding: 0 76px; }
 
 .c-top { display: flex; align-items: center; gap: 40px; }
 
