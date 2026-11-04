@@ -323,23 +323,26 @@
   <h2 class="title">The NL-mediated workflow preserves technical soundness</h2>
 
   <div class="body s-bench">
-    <div class="conds" data-r>
-      <div class="cond">
-        <span class="cn">Direct Instruction</span>
-        <div class="flow"><span class="nd">Instruction</span><i class="fa-solid fa-arrow-right"></i><span class="nd">Code</span></div>
+    <div class="setup" data-r>
+      <div class="conds">
+        <div class="cond">
+          <span class="cn">Direct Instruction</span>
+          <div class="flow"><span class="nd">Instruction</span><i class="fa-solid fa-arrow-right"></i><span class="nd">Code</span></div>
+        </div>
+        <span class="vs">vs.</span>
+        <div class="cond ours">
+          <span class="cn">NL Mediation <span class="note">NaturalEdit, six representation variants</span></span>
+          <div class="flow"><span class="nd">Instruction</span><i class="fa-solid fa-arrow-right"></i><span class="nd nl">NL summary</span><i class="fa-solid fa-arrow-right"></i><span class="nd">Code</span></div>
+        </div>
       </div>
-      <span class="vs">vs.</span>
-      <div class="cond ours">
-        <span class="cn">NL Mediation <span class="note">NaturalEdit, six representation variants</span></span>
-        <div class="flow"><span class="nd">Instruction</span><i class="fa-solid fa-arrow-right"></i><span class="nd nl">NL summary</span><i class="fa-solid fa-arrow-right"></i><span class="nd">Code</span></div>
-      </div>
+      <p class="setup-note">CanItEdit and EditEval · GPT-4.1 in both conditions · Pass@1 against ground-truth unit tests</p>
     </div>
+
     <div class="row bench-main">
       <div class="col bench-left">
         <figure class="fig benchfig" data-r style="--d:1">
           <img src="figures/paper/datasets-result.svg" alt="Pass@1 across granularity levels on CanItEdit Lazy, CanItEdit Descriptive, and EditEval">
-          <figcaption>CanItEdit and EditEval · GPT-4.1 in both conditions · Pass@1 against ground-truth unit tests</figcaption>
-        </figure>
+          </figure>
       </div>
 
       <div class="col bench-right">
