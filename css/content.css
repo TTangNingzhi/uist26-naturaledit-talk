@@ -417,28 +417,21 @@ a.venue-tag i { margin-left: 3px; font-size: 0.8em; }
 
 /* ------------------------------------------------------- spec-driven */
 
-.s-spec { gap: 44px; align-items: center; }
+.s-spec { display: flex; flex-direction: column; justify-content: center; gap: 56px; padding-bottom: 20px; }
 
-.tri { position: relative; flex: none; width: 520px; height: 400px; }
-.tri-lines { position: absolute; inset: 0; width: 100%; height: 100%; }
-.tri-lines polygon { fill: var(--warm-light); stroke: var(--nd-gold); stroke-width: 2.5; stroke-dasharray: 8 7; }
+.line3 { display: flex; align-items: flex-start; justify-content: center; }
+.line3 .link { width: 200px; margin: 39px 18px 0; border-top: 2.5px dashed var(--nd-gold); }
+.line3 .node { display: flex; flex-direction: column; align-items: center; gap: 10px; width: 210px; font-size: 22px; text-align: center; }
+.line3 .node i { display: grid; place-items: center; width: 80px; height: 80px; border-radius: 50%; background: var(--nd-blue); color: #fff; font-size: 28px; }
+.line3 .node.mid i { background: var(--nd-gold); }
+.line3 .node.mid b { color: var(--nd-gold-dark); }
 
-.node { position: absolute; display: flex; flex-direction: column; align-items: center; gap: 8px; width: 190px; font-size: 21px; text-align: center; }
-.node i { display: grid; place-items: center; width: 64px; height: 64px; border-radius: 50%; background: var(--nd-blue); color: #fff; font-size: 26px; }
-.node b { padding: 2px 10px; border-radius: 8px; background: #fff; }
-.n-top { left: 165px; top: 0; }
-.n-top i { background: var(--nd-gold); }
-.n-left { left: -25px; top: 292px; }
-.n-right { left: 355px; top: 292px; }
-.tri-c { position: absolute; left: 0; right: 0; top: 196px; text-align: center; font-size: 19px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--nd-gold-dark); }
-
-.spec-right { gap: 30px; }
+.spec-feats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+.sp { display: flex; gap: 16px; align-items: flex-start; padding: 20px 22px; border: 1.5px solid var(--line); border-radius: 14px; }
 .sp .fn { background: #fff; border: 2px solid var(--nd-blue); color: var(--nd-blue); }
+.sp b { font-size: 23px; }
+.sp .small { margin: 6px 0 0; font-size: 19.5px; }
 .brand { margin: 0 6px 0 2px; color: var(--ink); }
-.sp { display: flex; gap: 18px; align-items: center; }
-.sp b { font-size: 26px; }
-.sp .small { margin: 4px 0 0; font-size: 22px; }
-.punch { margin: 8px 0 0; padding: 14px 20px; border-left: 4px solid var(--nd-blue); border-radius: 4px 12px 12px 4px; background: var(--sky-light); font-size: 21px; line-height: 1.45; color: var(--nd-blue); }
 
 /* ------------------------------------------------------------ closing */
 
@@ -451,43 +444,25 @@ a.venue-tag i { margin-left: 3px; font-size: 0.8em; }
 .c-title p { margin: 8px 0 0; font-size: 21px; color: var(--ink-2); }
 .c-title p.mail { margin-top: 4px; font-family: var(--mono); font-size: 16px; color: var(--muted); }
 
-.c-mid {
-  flex: 1;
-  min-height: 0;
-  display: grid;
-  grid-template-columns: auto 660px;
-  justify-content: center;
-  gap: 56px;
-  margin-top: 22px;
-}
+.c-mid { display: grid; grid-template-columns: auto 720px; justify-content: center; align-items: center; gap: 64px; margin-top: 30px; }
 
-.c-left { align-self: center; display: flex; flex-direction: column; gap: 22px; }
-.c-me { display: flex; align-items: center; justify-content: center; gap: 34px; }
-
+.c-left { display: flex; flex-direction: column; gap: 30px; }
+.c-me { display: flex; align-items: center; gap: 34px; }
 .c-photo { width: 160px; height: 200px; object-fit: cover; border-radius: 22px; }
-
 .c-card { display: flex; flex-direction: column; gap: 4px; }
 .c-card .c-name { margin-bottom: 8px; }
-.c-name { margin-bottom: 2px; font-size: 34px; font-weight: 700; letter-spacing: -0.01em; }
+.c-name { font-size: 34px; font-weight: 700; letter-spacing: -0.01em; }
 .c-card a { display: flex; align-items: center; gap: 16px; font-size: 23px; color: var(--ink); text-decoration: none; }
 .c-card .ic { flex: none; width: 30px; text-align: center; font-size: 24px; color: var(--ink); }
 
-.c-try { display: flex; align-items: center; gap: 16px; align-self: center; padding: 12px 22px; border: 2.5px solid var(--nd-gold); border-radius: 16px; box-shadow: 0 6px 18px rgba(174, 145, 66, 0.15); text-decoration: none; }
-.c-try img { height: 46px; }
-.try-h { font-size: 22px; font-weight: 700; color: var(--nd-blue); }
-.try-s { margin-top: 2px; font-family: var(--mono); font-size: 15px; color: var(--muted); }
+.c-res { display: flex; flex-direction: column; gap: 12px; }
+.c-try { display: flex; align-items: center; gap: 14px; padding: 12px 18px; border-radius: 12px; background: var(--warm-light); font-size: 21px; color: var(--ink-2); text-decoration: none; }
+.c-try img { height: 30px; }
+.c-repo { display: flex; align-items: center; gap: 14px; padding: 0 18px; font-family: var(--mono); font-size: 16.5px; color: var(--ink-2); text-decoration: none; }
+.c-repo i { width: 30px; text-align: center; font-size: 26px; color: var(--ink); }
 
-.c-right { display: flex; flex-direction: column; gap: 22px; min-height: 0; justify-content: center; }
-.c-links { display: flex; flex-direction: column; align-items: center; gap: 4px; font-family: var(--mono); font-size: 16px; }
-.c-links a { color: var(--ink-2); text-decoration: none; }
-.c-links i { width: 22px; margin-right: 6px; color: var(--ink); }
-
-.c-take { display: flex; flex-direction: column; gap: 14px; }
-.c-take .tk-h { font-size: 16px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--nd-blue-bright); }
-.c-take .tk { display: flex; gap: 14px; align-items: flex-start; font-size: 21px; line-height: 1.4; color: var(--ink-2); }
-.c-take .tk b { color: var(--nd-blue); }
-.c-take .tk .n { flex: none; display: grid; place-items: center; width: 28px; height: 28px; margin-top: 1px; border-radius: 50%; background: var(--nd-blue); color: #fff; font-size: 15px; font-weight: 700; }
-.c-take .tk:nth-child(odd) .n { background: var(--nd-gold); }
+.c-shot { margin: 0; }
+.c-shot img { display: block; width: 100%; border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 14px 34px rgba(12, 35, 64, 0.12); }
 
 .c-bottom {
   display: grid;
@@ -495,7 +470,7 @@ a.venue-tag i { margin-left: 3px; font-size: 0.8em; }
   justify-content: center;
   gap: 40px;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .c-ack { margin: 0; font-size: 13px; line-height: 1.45; color: var(--muted); }

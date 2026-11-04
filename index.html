@@ -481,8 +481,8 @@
         <p class="small">modifications completed via the <b>modified summary</b> in NaturalEdit</p>
       </div>
       <div class="fs dim" data-r style="--d:2">
-        <div class="stat">95<small>/111</small></div>
-        <p class="small">via <b>direct-instruction fallback</b> in Baseline, where manual summary editing felt <span class="q">cumbersome and taking significant effort</span> (P5)</p>
+        <div class="stat">16<small>/111</small></div>
+        <p class="small">via the modified summary in Baseline, where manual summary editing felt <span class="q">cumbersome and taking significant effort</span> (P5)</p>
       </div>
       <div class="fs gold-l" data-r style="--d:3">
         <div class="stat gold">488</div>
@@ -508,25 +508,25 @@
     <div class="cd4">
       <div class="card cdc" data-r style="--d:1">
         <div class="fnum">Abstraction Gradient</div>
-        <h3>Top-down comprehension on demand</h3>
+        <h3>Adjustable granularity aided comprehension</h3>
         <div class="kv"><span class="stat sm">6.5</span><span class="note">vs. 4.5 Mdn, perceived code comprehension</span></div>
         <p class="small">Start from a <span class="q">coarser view for initial understanding</span> (P3); high granularity and bullets favored for editing</p>
       </div>
       <div class="card cdc" data-r style="--d:2">
         <div class="fnum">Closeness of Mapping</div>
-        <h3>Mapping prepared and validated edits</h3>
+        <h3>Mapping bridged understanding and editing</h3>
         <div class="kv"><span class="stat sm gold">60<small>/79</small></span><span class="note">summary edits directly preceded by mapping</span></div>
         <p class="small"><span class="q">helped me not only understand the code but also plan how to change it</span> (P5)</p>
       </div>
       <div class="card cdc" data-r style="--d:3">
         <div class="fnum">Viscosity</div>
-        <h3>Instructions did the heavy lifting</h3>
+        <h3>Instructions replaced manual summary edits</h3>
         <div class="kv"><span class="stat sm">58<small>/79</small></span><span class="note">summary commits with no manual refinement</span></div>
         <p class="small">Concise instructions (12 words) expanded into precise summary edits (18 words), e.g., <i>best</i> <i class="fa-solid fa-arrow-right"></i> <i>highest</i> NDCG</p>
       </div>
       <div class="card cdc" data-r style="--d:4">
         <div class="fnum">Visibility &amp; Consistency</div>
-        <h3>Diffs as a basis for validation</h3>
+        <h3>Incremental diffs supported validation</h3>
         <div class="kv"><span class="stat sm gold">6.0</span><span class="note">vs. 4.0 Mdn, validating modified code</span></div>
         <p class="small">Like reviewing a GitHub commit for <span class="q">accidental changes</span> (P6)</p>
       </div>
@@ -542,20 +542,18 @@
 <div class="frame"><div class="stage">
   <div class="eyebrow">Discussion</div>
   <h2 class="title">Generalizing to spec-driven development</h2>
-  <p class="lead">In tools such as <b class="nw"><i class="fa-brands fa-github brand"></i>GitHub Spec Kit</b> and <b class="nw"><i class="fa-brands fa-amazon brand"></i>Amazon Kiro</b>, lightweight NL documents (e.g., <span class="code">design.md</span>, <span class="code">tasks.md</span>) serve as the primary medium for human-AI interaction.</p>
+  <p class="lead">In industrial tools such as <b class="nw"><i class="fa-brands fa-github brand"></i>GitHub Spec Kit</b> and <b class="nw"><i class="fa-brands fa-amazon brand"></i>Amazon Kiro</b>, NL representations of the code (e.g., <span class="code">design.md</span>, <span class="code">tasks.md</span>) serve as the primary medium for human-AI interaction (e.g., code review, planning).</p>
 
-  <div class="body row s-spec">
-    <div class="tri" data-r>
-      <svg class="tri-lines" viewBox="0 0 520 400" aria-hidden="true">
-        <polygon points="260,62 70,330 450,330" />
-      </svg>
-      <div class="node n-top"><i class="fa-solid fa-file-lines"></i><b>NL artifact</b></div>
-      <div class="node n-left"><i class="fa-solid fa-user"></i><b>Developer intent</b></div>
-      <div class="node n-right"><i class="fa-solid fa-code"></i><b class="nw">AI-generated code</b></div>
-      <div class="tri-c">Three-way<br>alignment</div>
+  <div class="body s-spec">
+    <div class="line3" data-r>
+      <div class="node"><i class="fa-solid fa-user"></i><b>Developer intent</b></div>
+      <span class="link"></span>
+      <div class="node mid"><i class="fa-solid fa-file-lines"></i><b>NL artifact</b></div>
+      <span class="link"></span>
+      <div class="node"><i class="fa-solid fa-code"></i><b>AI-generated code</b></div>
     </div>
 
-    <div class="col grow spec-right">
+    <div class="spec-feats">
       <div class="sp" data-r style="--d:1"><span class="fn">F1</span><div><b>Adaptive representation</b><p class="small">Navigate NL artifacts across levels of abstraction</p></div></div>
       <div class="sp" data-r style="--d:2"><span class="fn">F2</span><div><b>Interactive mapping</b><p class="small">Link spec items to their implementations, making NL documents live and navigable</p></div></div>
       <div class="sp" data-r style="--d:3"><span class="fn">F3</span><div><b>Bidirectional synchronization</b><p class="small">Modify NL to drive code changes while reflecting those changes back</p></div></div>
@@ -596,24 +594,12 @@
           <a href="https://www.linkedin.com/in/ningzhi-tang"><i class="ic fa-brands fa-linkedin"></i>in/ningzhi-tang</a>
         </div>
       </div>
-      <a class="c-try" href="https://marketplace.visualstudio.com/items?itemName=sandwich-lab.naturaledit">
-        <img src="figures/logos/naturaledit.svg" alt="">
-        <div><div class="try-h">Try <span class="gold-word">Natural</span>Edit in VS Code</div><div class="try-s">VS Code Marketplace: sandwich-lab.naturaledit</div></div>
-      </a>
-    </div>
-    <div class="c-right">
-      <div class="c-links">
-        <a href="https://github.com/ND-SaNDwichLAB/naturaledit-replication-package"><i class="fa-brands fa-github"></i> ND-SaNDwichLAB/naturaledit-replication-package</a>
-        <a href="https://github.com/TTangNingzhi/NaturalEdit"><i class="fa-brands fa-github"></i> TTangNingzhi/NaturalEdit</a>
-      </div>
-      <div class="c-take">
-        <div class="tk-h">Takeaways</div>
-        <div class="tk"><span class="n">1</span><div><b>Adaptive representation:</b> adjustable structure and granularity support top-down comprehension</div></div>
-        <div class="tk"><span class="n">2</span><div><b>Interactive mapping:</b> explicit, structurally stable links externalize NL-code tracing</div></div>
-        <div class="tk"><span class="n">3</span><div><b>Intent-driven synchronization:</b> editable NL diffs make the system's interpretation explicit and correctable</div></div>
-        <div class="tk"><span class="n">4</span><div><b>Evaluation:</b> technically viable; improved comprehension, intent articulation, and validation with 20 developers</div></div>
+      <div class="c-res">
+        <a class="c-try" href="https://marketplace.visualstudio.com/items?itemName=sandwich-lab.naturaledit"><img src="figures/logos/vscode.svg" alt=""><span>Try <b><span class="gold-word">Natural</span><span class="blue-word">Edit</span></b> on the VS Code Marketplace</span></a>
+        <a class="c-repo" href="https://github.com/ND-SaNDwichLAB/naturaledit-replication-package"><i class="fa-brands fa-github"></i><span>ND-SaNDwichLAB/naturaledit-replication-package</span></a>
       </div>
     </div>
+    <figure class="c-shot"><img src="figures/paper/naturaledit-overview.png" alt="NaturalEdit side panel next to a code diff in VS Code"></figure>
   </div>
 
   <div class="c-bottom">
