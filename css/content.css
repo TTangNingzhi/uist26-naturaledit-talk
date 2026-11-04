@@ -325,17 +325,17 @@ a.venue-tag i { margin-left: 3px; font-size: 0.8em; }
 
 .s-expert { gap: 34px; margin-top: 30px; align-items: center; }
 .expfig { flex: none; width: 820px; }
-.exp-right { gap: 18px; }
-.corpus { padding: 18px 22px; }
-.corpus .small { margin: 0; font-size: 19px; }
-.crit { display: grid; gap: 8px; margin-top: 12px; }
-.crit > div { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
-.crit .ck { width: 96px; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--nd-blue-bright); }
-.crit .pill { padding: 2px 11px; font-size: 15px; font-weight: 500; }
-.xr { display: grid; grid-template-columns: 124px 1fr; align-items: center; gap: 14px; padding-left: 20px; border-left: 5px solid var(--nd-blue); }
+.exp-right { gap: 30px; justify-content: center; }
+.corpus { padding: 22px 26px; }
+.corpus .small { margin: 0; font-size: 22px; line-height: 1.45; }
+.crit { display: grid; gap: 10px; margin-top: 18px; }
+.crit > div { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.crit .ck { width: 110px; font-size: 16px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--nd-blue-bright); }
+.crit .pill { padding: 3px 13px; font-size: 18px; font-weight: 500; }
+.xr { display: flex; align-items: center; gap: 20px; padding-left: 24px; border-left: 5px solid var(--nd-blue); }
 .xr.gold-l { border-left-color: var(--nd-gold); }
-.xr .stat.sm { font-size: 44px; }
-.xr .small { margin: 0; font-size: 19px; }
+.xr .stat { font-size: 64px; }
+.xr .small { margin: 0; font-size: 23px; }
 
 /* ------------------------------------------------------- user study */
 
