@@ -341,13 +341,9 @@ a.venue-tag i { margin-left: 3px; font-size: 0.8em; }
 .live-box { position: relative; flex: 1; border: 1.5px solid var(--line); border-radius: 14px; overflow: hidden; background: #fff; }
 .demo-video, .demo-yt { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: #fff; }
 .demo-video { object-fit: contain; background: #fafbfc; }
-.yt-missing { position: absolute; inset: 0; display: grid; place-content: center; gap: 10px; font-size: 20px; color: var(--muted); text-align: center; }
-.yt-missing i { font-size: 44px; color: var(--faint); }
-.yt-missing p { margin: 0; }
-.demo-box .demo-yt, .demo-box .yt-missing { display: none; }
+.demo-box .demo-yt { display: none; }
 .demo-box[data-mode="youtube"] .demo-video { display: none; }
 .demo-box[data-mode="youtube"][data-yt="set"] .demo-yt { display: block; }
-.demo-box[data-mode="youtube"][data-yt="missing"] .yt-missing { display: grid; }
 
 /* ------------------------------------------------------- benchmark */
 
