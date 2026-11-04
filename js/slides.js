@@ -149,10 +149,9 @@
     };
     box.dataset.yt = id ? 'set' : 'missing';
     buttons.forEach((b) => b.addEventListener('click', () => set(b.dataset.mode)));
-    // default to the clip; fall back to YouTube when the file is not there (e.g., a hosted copy)
-    set('clip');
-    if (video.error) set('youtube');
-    video.addEventListener('error', () => set('youtube'));
+    // default to YouTube; YouTube refuses to play inside a page opened as a local file (no
+    // referring origin), so there the recorded clip is the default
+    set(location.protocol === 'file:' ? 'clip' : 'youtube');
     // never autoplay (the live demo comes first); pause when leaving the slide
     slides.forEach((s) => s !== slide && s.addEventListener('slide:enter', () => video.pause()));
   });

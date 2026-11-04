@@ -260,9 +260,16 @@
     </figure>
     <div class="ast-band" data-r style="--d:1">
       <div class="ab-h"><i class="fa-solid fa-anchor"></i><b>AST-driven structural alignment</b><span>Links stay valid as code evolves through formatting changes, moves, and renames</span></div>
-      <div class="ab-anchor">
-        <div class="ab-row"><span class="ab-k">Structural path</span><span class="chip">module</span><i class="fa-solid fa-chevron-right"></i><span class="chip">function_definition</span><i class="fa-solid fa-chevron-right"></i><span class="chip">for_statement</span></div>
-        <div class="ab-row"><span class="ab-k">Target identity</span><span class="chip">type</span><span class="chip">name</span><span class="chip">content hash</span></div>
+      <div class="ab-grid">
+        <span class="ab-k">Structural path</span>
+        <div class="ab-chips"><span class="chip">module</span><i class="fa-solid fa-chevron-right"></i><span class="chip">function_definition</span><i class="fa-solid fa-chevron-right"></i><span class="chip">for_statement</span></div>
+        <span class="ab-d">Type, name, and sibling index at each level</span>
+        <span class="ab-k">Target identity</span>
+        <div class="ab-chips"><span class="chip">type</span><span class="chip">name</span><span class="chip">content hash</span></div>
+        <span class="ab-d">Minimal AST node enclosing the code scope</span>
+        <span class="ab-k">Re-resolution</span>
+        <div class="ab-chips"><span class="m">s<sub>path</sub> · s<sub>target</sub></span></div>
+        <span class="ab-d">Match by type, then name, then position</span>
       </div>
     </div>
   </div>
@@ -293,11 +300,11 @@
   <div class="live-head">
     <div>
       <div class="eyebrow">Live demo</div>
-      <h2 class="title"><span class="gold-word">Natural</span><span class="blue-word">Edit</span> in VS Code</h2>
+      <h2 class="title"><span class="gold-word">Natural</span><span class="blue-word">Edit</span> in <img class="vsc" src="figures/logos/vscode.svg" alt="">VS Code</h2>
     </div>
     <div class="modes">
-      <button data-mode="clip"><i class="fa-solid fa-film"></i> Recorded clip</button>
       <button data-mode="youtube"><i class="fa-brands fa-youtube"></i> YouTube</button>
+      <button data-mode="clip"><i class="fa-solid fa-film"></i> Recorded clip</button>
     </div>
   </div>
   <div class="live-box demo-box" data-demo>
