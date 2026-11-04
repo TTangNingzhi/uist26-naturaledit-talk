@@ -228,7 +228,7 @@ body.no-rail .stage { border-color: transparent; border-radius: 0; }
   color: var(--nd-blue-bright);
 }
 
-.eyebrow .rq { padding: 0; border: 0; color: var(--nd-blue); }
+.eyebrow .rq { padding: 0; border: 0; color: var(--nd-gold-dark); }
 .eyebrow .rq::after { content: "·"; margin: 0 10px; color: var(--faint); }
 
 .title {
