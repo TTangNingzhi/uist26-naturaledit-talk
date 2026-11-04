@@ -111,7 +111,7 @@ a.venue-tag i { margin-left: 3px; font-size: 0.8em; }
 
 /* ------------------------------------------------------------ motivation */
 
-.s-demand { display: flex; flex-direction: column; gap: 0; margin-top: 32px; }
+.s-demand { display: flex; flex-direction: column; justify-content: center; gap: 0; margin-top: 32px; padding-bottom: 16px; }
 
 .sem {
   display: flex;
@@ -123,7 +123,9 @@ a.venue-tag i { margin-left: 3px; font-size: 0.8em; }
   background: var(--sky-light);
 }
 
-.sem p { margin: 0; font-size: 22px; line-height: 1.45; color: var(--ink-2); }
+.sem p { flex: 1; margin: 0; font-family: var(--serif); font-style: italic; font-size: 23px; line-height: 1.45; color: var(--ink-2); }
+.sem p b { font-style: normal; }
+.sem-src { flex: none; font-size: 17px; color: var(--muted); }
 .sem b { color: var(--nd-blue); }
 
 .stages { display: grid; grid-template-columns: 1fr 48px 1fr 48px 1fr; margin-top: 30px; }
@@ -145,12 +147,10 @@ a.venue-tag i { margin-left: 3px; font-size: 0.8em; }
 .stage-card .foot-note i { margin-right: 6px; color: var(--nd-blue-bright); }
 .stage-card .foot-note b { font-size: 26px; }
 
-.model-src { margin-top: 10px; text-align: right; }
 
-.llm { margin-top: auto; padding: 16px 24px; border-left: 5px solid var(--nd-gold); border-radius: 4px 12px 12px 4px; background: var(--warm-light); }
-.llm-h { font-size: 22px; font-weight: 700; color: var(--ink); }
-.llm-h i { margin-right: 8px; color: var(--nd-gold-dark); }
-.llm-rows { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 8px; font-size: 20px; line-height: 1.4; color: var(--ink-2); }
+.llm { display: flex; align-items: center; gap: 16px; margin-top: 40px; padding: 16px 24px; border-radius: 12px; background: var(--warm-light); }
+.llm i { font-size: 22px; color: var(--nd-gold-dark); }
+.llm p { margin: 0; font-size: 21px; line-height: 1.45; color: var(--ink-2); }
 
 /* ------------------------------------------------------------ opportunity */
 
