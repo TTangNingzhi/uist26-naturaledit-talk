@@ -1,0 +1,713 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UIST 2026 - NaturalEdit</title>
+  <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="css/slides.css">
+  <link rel="stylesheet" href="css/content.css">
+</head>
+<body>
+
+<aside class="rail">
+  <div class="rail-brand">
+    <img class="venue" src="figures/logos/uist-2026-horizontal.svg" alt="UIST 2026 Detroit">
+    <img class="lab" src="figures/logos/sandwich.svg" alt="SaNDwich Lab">
+  </div>
+  <nav class="rail-nav"></nav>
+  <div class="rail-sep"></div>
+  <div class="rail-me">
+    <div class="avatar">NT<img src="figures/headshot.jpg" alt="" onerror="this.remove()"></div>
+    <div>
+      <div class="who">Ningzhi Tang</div>
+      <div class="sub">ntang@nd.edu</div>
+    </div>
+  </div>
+</aside>
+
+<main class="deck">
+
+<!-- ============================================================ TITLE -->
+<section class="slide" data-title="Title" data-group="Introduction">
+<div class="frame"><div class="stage s-title">
+
+  <img class="uist-logo" src="figures/logos/uist-2026.svg" alt="UIST 2026 Detroit">
+
+  <div class="title-block">
+    <h1><img class="ne-icon" src="figures/logos/naturaledit.svg" alt=""><span class="gold-word">Natural</span>Edit</h1>
+    <p class="subtitle">Code Modification through Direct Interaction with <b class="nw">Adaptive Natural Language Representation</b></p>
+    <p class="authors">
+      <b>Ningzhi Tang</b>, David Meininger, Gelei Xu, Yiyu Shi,<br>
+      Yu Huang, Collin McMillan, Toby Jia-Jun Li
+    </p>
+  </div>
+
+  <!-- faint backdrop: the paper's summary diff (Figure 3, medium, bulleted) -->
+  <div class="backdrop" aria-hidden="true">
+    <div class="bd-title">Filter, Format <ins>and Group</ins> Long-Term Active Users</div>
+    <ul>
+      <li>Filters list to include only users with 'active' status</li>
+      <li>Selects active users who joined over a year ago.</li>
+      <li>Formats each qualifying user's info as "Name &lt;email&gt;"
+        <ul><li><del>Collect</del><ins>Groups</ins> these formatted strings <del>into a results list</del><ins>by the user's email domain</ins></li></ul>
+      </li>
+      <li>Returns <del>the</del><ins>a dictionary mapping each domain to a list</ins> of these strings</li>
+    </ul>
+  </div>
+
+  <div class="logos">
+    <img src="figures/logos/notre-dame.png" alt="University of Notre Dame" style="height:76px">
+    <img src="figures/logos/vanderbilt.png" alt="Vanderbilt University" style="height:70px">
+    <span class="grow"></span>
+    <img class="logo-round" src="figures/logos/sandwich.svg" alt="SaNDwich Lab" style="height:108px">
+  </div>
+
+</div></div>
+</section>
+
+<!-- ============================================================ MOTIVATION -->
+<section class="slide" data-title="Cognitive Demands" data-group="Introduction">
+<div class="frame"><div class="stage">
+  <div class="eyebrow">Motivation</div>
+  <h2 class="title">Code modification is cognitively demanding</h2>
+  <p class="lead">Developers devote a substantial portion of their effort to code modification: altering existing programs to fit new tasks.</p>
+
+  <div class="body s-demand">
+    <div class="sem" data-r>
+      <div class="icon-badge"><i class="fa-solid fa-brain"></i></div>
+      <p><b>“Internal semantics”</b>, a mental model of the program's logic: the cognitive target of comprehension, the basis of planning, and the standard against which validation is judged, <span class="mark">yet it exists only in the developer's mind</span>.</p>
+    </div>
+
+    <div class="stages">
+      <div class="card stage-card" data-r style="--d:1">
+        <div class="k"><span class="num">1</span>Comprehend</div>
+        <p>Construct an internal semantics of the existing code</p>
+        <div class="foot-note">Can consume up to <b class="gold">58%</b> of working time</div>
+      </div>
+      <div class="arrow" data-r style="--d:1"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="card stage-card" data-r style="--d:2">
+        <div class="k"><span class="num">2</span>Plan &amp; map</div>
+        <p>Form a modification plan, then map it back to the program's formal syntax</p>
+        <div class="foot-note"><i class="fa-solid fa-right-to-bracket"></i> Gulf of Execution</div>
+      </div>
+      <div class="arrow" data-r style="--d:2"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="card stage-card" data-r style="--d:3">
+        <div class="k"><span class="num">3</span>Validate</div>
+        <p>Verify that the result reflects the intent, without regressions or unintended side effects</p>
+        <div class="foot-note"><i class="fa-solid fa-right-from-bracket"></i> Gulf of Evaluation</div>
+      </div>
+    </div>
+    <div class="src model-src" data-r style="--d:3">Shneiderman and Mayer's model of code modification</div>
+
+    <div class="llm" data-r style="--d:4">
+      <div class="llm-h"><i class="fa-solid fa-robot"></i> LLMs have transformed but not eliminated these bottlenecks</div>
+      <div class="llm-rows">
+        <div><b>Vibe coding</b> compresses intent into a prompt, amplifying the “fuzzy abstraction matching” problem</div>
+        <div><b>Validating AI-generated edits</b> overwhelms cognitive load, pushing developers toward surface-level execution checks</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot"><span class="pg"></span></div>
+</div></div>
+</section>
+
+<!-- ============================================================ OPPORTUNITY -->
+<section class="slide" data-title="Externalizing Intent" data-group="Introduction">
+<div class="frame"><div class="stage">
+  <div class="eyebrow">Opportunity</div>
+  <h2 class="title">NL code summaries can externalize this implicit model</h2>
+  <p class="lead">Natural language (NL) summaries describe the functionality of the program in human-readable form. However, they have traditionally served as <b>static documentation</b> for comprehension.</p>
+
+  <div class="body row s-opp">
+    <div class="ide opp-ide" data-r>
+      <div class="ide-bar"><i></i><i></i><i></i><span>user_data.py</span></div>
+<pre class="py"><span class="ln">1</span><span class="k">def</span> <span class="f">process_user_data</span>(users):
+<span class="doc"><span class="ln">2</span>    <span class="s">"""</span>
+<span class="ln">3</span>    <span class="s">The function takes a list of user dictionaries and filters</span>
+<span class="ln">4</span>    <span class="s">out those who are not active. It then further filters for</span>
+<span class="ln">5</span>    <span class="s">users who joined more than a year ago and returns a list of</span>
+<span class="ln">6</span>    <span class="s">their names and emails formatted as strings. The result is</span>
+<span class="ln">7</span>    <span class="s">a list of long-term, active users' contact information.</span>
+<span class="ln">8</span>    <span class="s">"""</span></span><span class="dim"><span class="ln">9</span>    active_users = [u <span class="k">for</span> u <span class="k">in</span> users <span class="k">if</span> u[<span class="s">'status'</span>] == <span class="s">'active'</span>]
+<span class="ln">10</span>    <span class="k">from</span> datetime <span class="k">import</span> datetime, timedelta
+<span class="ln">11</span>    one_year_ago = datetime.<span class="f">now</span>() - <span class="f">timedelta</span>(days=<span class="n">365</span>)
+<span class="ln">12</span>    long_term_users = [
+<span class="ln">13</span>        u <span class="k">for</span> u <span class="k">in</span> active_users <span class="k">if</span> u[<span class="s">'join_date'</span>] &lt; one_year_ago
+<span class="ln">14</span>    ]
+<span class="ln">15</span>    results = []
+<span class="ln">16</span>    <span class="k">for</span> u <span class="k">in</span> long_term_users:
+<span class="ln">17</span>        results.<span class="f">append</span>(<span class="s">f"{u['name']} &lt;{u['email']}&gt;"</span>)
+<span class="ln">18</span>    <span class="k">return</span> results</span></pre>
+    </div>
+
+    <div class="col grow opp-right">
+      <div class="card cover" data-r style="--d:1">
+        <h4>Static summaries across the workflow</h4>
+        <div class="cov"><span><span class="num">1</span>Comprehend</span><b class="yes"><i class="fa-solid fa-circle-check"></i> Supported</b></div>
+        <div class="cov"><span><span class="num">2</span>Express changes</span><b class="no"><i class="fa-regular fa-circle-xmark"></i> Gap</b></div>
+        <div class="cov"><span><span class="num">3</span>Validate</span><b class="no"><i class="fa-regular fa-circle-xmark"></i> Gap</b></div>
+      </div>
+
+      <div class="shift" data-r style="--d:2">
+        <span class="from">Static documentation for comprehension</span>
+        <i class="fa-solid fa-arrow-down"></i>
+        <span class="to">An interactive representation for code modification</span>
+      </div>
+
+      <div class="prior" data-r style="--d:3">
+        <div class="prior-h"><i class="fa-solid fa-flask"></i> Our prior study with 15 developers <span class="venue-tag">VL/HCC '25</span></div>
+        <p>Modifying summaries can prompt code changes, but the workflow exhibits <b>overly rigid representations</b>, <b>implicit NL-code links</b>, and <b>disproportionate editing effort</b>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot"><span class="pg"></span></div>
+</div></div>
+</section>
+
+<!-- ============================================================ DESIGN GOALS -->
+<section class="slide" data-title="Design Goals" data-group="Introduction">
+<div class="frame"><div class="stage">
+  <div class="eyebrow">Design goals</div>
+  <h2 class="title">Four gaps through the <em>Cognitive Dimensions of Notations</em></h2>
+  <p class="lead">Analyzing NL-mediated workflows through this framework, grounded in empirical findings, reveals four gaps.</p>
+
+  <div class="body s-dg">
+    <div class="dg" data-r>
+      <div class="dim-name">Abstraction Gradient</div>
+      <div class="gap"><i class="fa-solid fa-lock"></i><p>A fixed abstraction gradient that cannot adapt across cognitive tasks</p></div>
+      <div class="dg-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+      <div class="goal"><span class="tag">DG1</span>Enable an adaptive abstraction gradient</div>
+    </div>
+    <div class="dg" data-r style="--d:1">
+      <div class="dim-name">Closeness of Mapping</div>
+      <div class="gap"><i class="fa-solid fa-link-slash"></i><p>Implicit NL-code links burden working memory</p></div>
+      <div class="dg-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+      <div class="goal"><span class="tag">DG2</span>Ensure tight and interactive mapping</div>
+    </div>
+    <div class="dg" data-r style="--d:2">
+      <div class="dim-name">Viscosity</div>
+      <div class="gap"><i class="fa-solid fa-pencil"></i><p>High effort in translating vague intent into precise summary edits</p></div>
+      <div class="dg-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+      <div class="goal"><span class="tag">DG3</span>Minimize viscosity in intent specification</div>
+    </div>
+    <div class="dg" data-r style="--d:3">
+      <div class="dim-name">Visibility &amp; Consistency</div>
+      <div class="gap"><i class="fa-solid fa-eye-slash"></i><p>Summaries regenerated without surfacing inspectable diffs</p></div>
+      <div class="dg-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+      <div class="goal"><span class="tag">DG4</span>Maintain high visibility and consistency</div>
+    </div>
+  </div>
+
+  <div class="foot"><span class="pg"></span></div>
+</div></div>
+</section>
+
+<!-- ============================================================ OVERVIEW -->
+<section class="slide" data-title="System Overview" data-group="NaturalEdit">
+<div class="frame"><div class="stage">
+  <div class="eyebrow">NaturalEdit</div>
+  <h2 class="title"><span class="gold-word">Natural</span>Edit treats NL as a first-class interactive representation</h2>
+  <p class="lead">A <b>VS Code extension</b> with three core features, each grounded in a cognitive dimension.</p>
+
+  <div class="body row s-over">
+    <figure class="shot" data-r>
+      <img src="figures/paper/naturaledit-overview.png" alt="NaturalEdit side panel next to a code diff in VS Code">
+    </figure>
+
+    <div class="col grow feats">
+      <div class="feat" data-r style="--d:1">
+        <span class="fn">F1</span>
+        <div>
+          <h3>Adaptive Multi-Faceted Representation</h3>
+          <p>Adapts NL summaries in structure and granularity to the developer's current task</p>
+          <span class="cd"><i class="fa-solid fa-layer-group"></i> Abstraction Gradient</span>
+        </div>
+      </div>
+      <div class="feat" data-r style="--d:2">
+        <span class="fn">F2</span>
+        <div>
+          <h3>Interactive Cross-Representation Mapping</h3>
+          <p>Fine-grained, structurally stable links between NL segments and code</p>
+          <span class="cd"><i class="fa-solid fa-link"></i> Closeness of Mapping</span>
+        </div>
+      </div>
+      <div class="feat" data-r style="--d:3">
+        <span class="fn">F3</span>
+        <div>
+          <h3>Intent-Driven Bidirectional Synchronization</h3>
+          <p>High-level goals as free-form instructions, translated into NL edits and code changes with incremental diffs</p>
+          <span class="cd"><i class="fa-solid fa-arrows-rotate"></i> Viscosity, Visibility &amp; Consistency</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot"><span class="pg"></span></div>
+</div></div>
+</section>
+
+<!-- ============================================================ F1 -->
+<section class="slide" data-title="Adaptive Representation" data-group="NaturalEdit">
+<div class="frame"><div class="stage">
+  <div class="eyebrow"><span class="rq">F1</span>Abstraction gradient</div>
+  <h2 class="title"><span class="hl">Adaptive</span> multi-faceted representation</h2>
+
+  <div class="body row s-f1">
+    <div class="sg" data-r>
+      <div class="sg-title">Filter and Format Long-Term Active Users</div>
+      <div class="sg-grid">
+        <div class="sg-corner"></div>
+        <div class="sg-col"><i class="fa-regular fa-square"></i> Paragraph</div>
+        <div class="sg-col"><i class="fa-regular fa-square-check"></i> Bulleted</div>
+
+        <div class="sg-row"><b>Low</b><span>overview</span></div>
+        <div class="sg-cell">This function filters active users who joined over a year ago and returns their names and emails.</div>
+        <div class="sg-cell"><ul><li>Filter for users marked as active</li><li>Select those who joined over a year ago</li><li>Return the formatted list of names and emails</li></ul></div>
+
+        <div class="sg-row"><b>Medium</b><span>procedural</span></div>
+        <div class="sg-cell">The function filters user dictionaries to find those who are active and have been members for over a year. It then formats each qualifying user's name and email into a string. The result is a list of these strings.</div>
+        <div class="sg-cell"><ul><li>Filters the list to include only users with 'active' status</li><li>Selects active users who joined over a year ago.</li><li>Formats each qualifying user's info as "Name &lt;email&gt;"<ul><li>Collects the formatted strings into a results list</li></ul></li><li>Returns the list of these strings</li></ul></div>
+
+        <div class="sg-row"><b>High</b><span>line-by-line</span></div>
+        <div class="sg-cell">This function filters a list of user dictionaries to include only those whose 'status' is 'active'. It then calculates the date one year prior to the current time and selects active users who joined before this threshold as long-term users. For each long-term active user, it formats a string as "Name &lt;email&gt;" and adds it to a result list, which the function returns.</div>
+        <div class="sg-cell"><ul><li>Takes a list of user dictionaries as input</li><li>Keep only users whose 'status' is 'active'</li><li>Calculates the date one year before today</li><li>Selects active users who joined before that date<ul><li>Identifies these as long-term active users</li></ul></li><li>For each long-term active user:<ul><li>Formats as "Name &lt;email&gt;" and appends to results</li></ul></li><li>Returns the list of formatted strings</li></ul></div>
+      </div>
+      <div class="sg-ax-y">Granularity <i class="fa-solid fa-arrow-down"></i></div>
+    </div>
+
+    <div class="col grow f1-notes">
+      <div class="card" data-r style="--d:1">
+        <h4><i class="fa-regular fa-square-check"></i> Structure</h4>
+        <p class="small">Bulleted lists mirror code's logic for procedural understanding; paragraphs support a more holistic, narrative view.</p>
+      </div>
+      <div class="card" data-r style="--d:2">
+        <h4><i class="fa-solid fa-sliders"></i> Granularity</h4>
+        <p class="small">From what a function does, to how it works, to a line-by-line explanation, analogous to <b>semantic zooming</b>.</p>
+      </div>
+      <p class="note gen" data-r style="--d:3"><i class="fa-solid fa-bolt"></i> All six variants come from a single structured LLM prompt, enabling instantaneous, consistent switching.</p>
+      <p class="note gen" data-r style="--d:4"><i class="fa-solid fa-sitemap"></i> Fluid code scope navigation: move up through the AST path, or down by clicking a summary segment.</p>
+    </div>
+  </div>
+
+  <div class="foot"><span class="pg"></span></div>
+</div></div>
+</section>
+
+<!-- ============================================================ F2 -->
+<section class="slide" data-title="Interactive Mapping" data-group="NaturalEdit">
+<div class="frame"><div class="stage">
+  <div class="eyebrow"><span class="rq">F2</span>Closeness of mapping</div>
+  <h2 class="title"><span class="hl">Interactive</span> cross-representation mapping</h2>
+  <p class="lead"><b>Hovering</b> over an NL segment highlights its code; <b>clicking</b> navigates to and selects that scope.</p>
+
+  <div class="body row s-f2">
+    <div class="map" data-map="b" data-r>
+      <div class="map-sum">
+        <div class="map-ctl"><i class="fa-regular fa-square"></i> Structured <span>Granularity</span><i class="tg"></i></div>
+        <p>The function <span class="seg" data-seg="a">filters a list of users to find those who are currently active</span> and <span class="seg" data-seg="b">have been members for more than a year</span>. It then <span class="seg" data-seg="c">formats each qualifying user's name and email into a string</span>. <span class="seg" data-seg="d">The result is a list of these strings.</span></p>
+      </div>
+<pre class="py map-code"><span class="cl" data-lines=""><span class="ln">1</span><span class="k">def</span> <span class="f">process_user_data</span>(users):</span>
+<span class="cl" data-lines="a"><span class="ln">2</span>    active_users = [u <span class="k">for</span> u <span class="k">in</span> users <span class="k">if</span> u[<span class="s">'status'</span>] == <span class="s">'active'</span>]</span>
+<span class="cl" data-lines=""><span class="ln">3</span>    <span class="k">from</span> datetime <span class="k">import</span> datetime, timedelta</span>
+<span class="cl" data-lines="b"><span class="ln">4</span>    one_year_ago = datetime.<span class="f">now</span>() - <span class="f">timedelta</span>(days=<span class="n">365</span>)</span>
+<span class="cl" data-lines="b"><span class="ln">5</span>    long_term_users = [</span>
+<span class="cl" data-lines="b"><span class="ln">6</span>        u <span class="k">for</span> u <span class="k">in</span> active_users <span class="k">if</span> u[<span class="s">'join_date'</span>] &lt; one_year_ago</span>
+<span class="cl" data-lines=""><span class="ln">7</span>    ]</span>
+<span class="cl" data-lines="d"><span class="ln">8</span>    results = []</span>
+<span class="cl" data-lines="c"><span class="ln">9</span>    <span class="k">for</span> u <span class="k">in</span> long_term_users:</span>
+<span class="cl" data-lines="c"><span class="ln">10</span>        results.<span class="f">append</span>(<span class="s">f"{u['name']} &lt;{u['email']}&gt;"</span>)</span>
+<span class="cl" data-lines="d"><span class="ln">11</span>    <span class="k">return</span> results</span></pre>
+      <div class="map-hint"><i class="fa-solid fa-arrow-pointer"></i> Hover a segment to try it</div>
+    </div>
+
+    <div class="card col grow ast" data-r style="--d:1">
+      <h4>AST-driven structural alignment</h4>
+      <p class="small">Links must stay valid as code evolves. Volatile line numbers are replaced with persistent <b>AST anchors</b> (Tree-sitter):</p>
+      <div class="anchor">
+        <div class="a-k">Structural path</div>
+        <div class="path"><span>module</span><i class="fa-solid fa-chevron-right"></i><span>function_definition</span><i class="fa-solid fa-chevron-right"></i><span>for_statement</span></div>
+        <div class="a-k">Target identity</div>
+        <div class="path"><span>type</span><span>name</span><span>content hash</span></div>
+      </div>
+      <p class="small">Re-resolved by scoring candidates as <span class="m">s<sub>path</sub> · s<sub>target</sub></span>, matching by type, then name, then position.</p>
+      <div class="states">
+        <div><span class="pill blue">Valid</span><span class="note">Formatting changes leave anchors intact; moves and renames are re-resolved</span></div>
+        <div><span class="pill gold">Outdated</span><span class="note">Flagged in the UI when anchors cannot be re-resolved</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot"><span class="pg"></span></div>
+</div></div>
+</section>
+
+<!-- ============================================================ F3 -->
+<section class="slide" data-title="Bidirectional Sync" data-group="NaturalEdit">
+<div class="frame"><div class="stage">
+  <div class="eyebrow"><span class="rq">F3</span>Viscosity, visibility &amp; consistency</div>
+  <h2 class="title"><span class="hl">Intent-driven</span> bidirectional synchronization</h2>
+
+  <div class="body s-f3">
+    <figure class="fig sync" data-r>
+      <img src="figures/paper/intent-sync.svg" alt="Seven-step loop: instruction, NL diff, refine, code change, incremental NL diff, global and local validation">
+    </figure>
+    <div class="legend3" data-r style="--d:1">
+      <span><i class="solid"></i> developer actions</span>
+      <span><i class="dashed"></i> system actions</span>
+    </div>
+    <div class="steps3">
+      <div class="step3" data-r style="--d:1">
+        <div class="sn"><span>1</span><span>2</span><span>3</span></div>
+        <div><h3>Intent articulation &amp; NL refinement</h3><p>The developer issues a high-level instruction; the system proposes a <b>summary diff</b> as an editable intermediate artifact, validated or refined <b>before any code is modified</b>.</p></div>
+      </div>
+      <div class="step3" data-r style="--d:2">
+        <div class="sn"><span>4</span><span>5</span></div>
+        <div><h3>Code modification &amp; synchronization</h3><p>Upon approval, the code change follows the approved NL diff; the summary is regenerated as <b class="gold">Incremental Diffs</b> that isolate the semantic impact.</p></div>
+      </div>
+      <div class="step3" data-r style="--d:3">
+        <div class="sn"><span>6</span><span>7</span></div>
+        <div><h3>Multi-level validation</h3><p><b>Global</b>: inspect summary and code diffs side by side. <b>Local</b>: use interactive mapping on highlighted diff regions.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot"><span class="pg"></span></div>
+</div></div>
+</section>
+
+<!-- ============================================================ DEMO -->
+<section class="slide" data-title="Demo" data-group="NaturalEdit">
+<div class="frame"><div class="stage s-live">
+  <div class="live-head">
+    <div>
+      <div class="eyebrow">Demo</div>
+      <h2 class="title">Grouping long-term active users by email domain</h2>
+    </div>
+  </div>
+  <div class="live-box demo-box">
+    <img class="live-fallback" src="figures/paper/example-workflow.svg" alt="NaturalEdit interface during the example workflow, steps A to F">
+    <video class="demo-video" src="figures/demo.mp4" preload="metadata" controls muted playsinline hidden></video>
+    <div class="placeholder-tag"><i class="fa-solid fa-film"></i> Placeholder: add figures/demo.mp4 to replace this figure</div>
+  </div>
+  <div class="foot"><span class="pg"></span></div>
+</div></div>
+</section>
+
+<!-- ============================================================ TECHNICAL EVALUATION -->
+<section class="slide" data-title="Technical Evaluation" data-group="Evaluation">
+<div class="frame"><div class="stage">
+  <div class="eyebrow">Technical evaluation</div>
+  <h2 class="title">The NL-mediated workflow preserves technical soundness</h2>
+
+  <div class="body row s-tech">
+    <div class="card fcol tech" data-r>
+      <div class="fhead"><div class="icon-badge"><i class="fa-solid fa-vial-circle-check"></i></div><div><div class="fnum">Code editing benchmarks</div><h3>Direct Instruction vs. NL Mediation</h3></div></div>
+      <p class="small">CanItEdit (105 tasks, <i>Lazy</i> and <i>Descriptive</i> instructions) and EditEval (194 tasks), GPT-4.1, Pass@1 against ground-truth unit tests</p>
+      <figure class="fig"><img src="figures/paper/datasets-result.svg" alt="Pass@1 across granularity levels on three benchmarks"></figure>
+      <div class="tk-rows">
+        <div><span class="stat sm">−1.92<small>%</small></span><span class="small">on average vs. Direct Instruction (maximum −8.98%): <b>comparable</b></span></div>
+        <div><span class="stat sm gold">+0.48<small>%</small></span><span class="small">on <i>Lazy</i> (vs. −4.45% on <i>Descriptive</i>): <b>more robust to vague instructions</b></span></div>
+      </div>
+    </div>
+
+    <div class="card fcol tech" data-r style="--d:1">
+      <div class="fhead"><div class="icon-badge"><i class="fa-solid fa-user-check"></i></div><div><div class="fnum">Expert ratings</div><h3>Quality of intermediate NL artifacts</h3></div></div>
+      <p class="small">72 summaries (36 with diffs) and 487 summary-code mappings, rated by two experts on a 5-point scale</p>
+      <figure class="fig"><img src="figures/paper/ratings-result.svg" alt="Expert ratings of summary, mapping, and diff quality across granularity"></figure>
+      <div class="tk-rows">
+        <div><span class="stat sm">42<small>/48</small></span><span class="small">mean scores between 4.5 and 5.0: <b>consistently high quality</b></span></div>
+        <div><span class="stat sm gold">3.75</span><span class="small">diff salience at high-granularity paragraphs: <b>a trade-off between detail and salience</b></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot"><span class="pg"></span></div>
+</div></div>
+</section>
+
+<!-- ============================================================ USER STUDY -->
+<section class="slide" data-title="User Study" data-group="Evaluation">
+<div class="frame"><div class="stage">
+  <div class="eyebrow">User study</div>
+  <h2 class="title">Within-subjects study with 20 experienced developers</h2>
+
+  <div class="body row s-study">
+    <div class="col grow facts">
+      <div class="fact" data-r><div class="icon-badge"><i class="fa-solid fa-users"></i></div><div><h4>Participants</h4><p>20 developers, including <b>7 industry professionals</b>; 9.55 years of programming experience on average; all use LLM tools frequently or almost always</p></div></div>
+      <div class="fact" data-r style="--d:1"><div class="icon-badge"><i class="fa-solid fa-code-compare"></i></div><div><h4>Conditions</h4><p><b>NaturalEdit</b> vs. a feature-ablated <b>Baseline</b>: a fixed medium-level paragraph, no mapping, and manual summary editing</p></div></div>
+      <div class="fact" data-r style="--d:2"><div class="icon-badge"><i class="fa-solid fa-laptop-code"></i></div><div><h4>Protocol</h4><p>Two tasks, 25 minutes each, counterbalanced in CodeSandbox (a web-based VS Code)</p></div></div>
+      <div class="fact" data-r style="--d:3"><div class="icon-badge"><i class="fa-solid fa-chart-simple"></i></div><div><h4>Measures</h4><p>Interaction logs, NASA-TLX, UMUX-Lite, custom Likert items, and a 20-minute semi-structured interview</p></div></div>
+    </div>
+
+    <div class="tasks">
+      <div class="task" data-r style="--d:2">
+        <div class="task-txt">
+          <div class="task-h"><span class="pill blue">Task 1</span> Finance Dashboard</div>
+          <div class="lang">Node.js + React stock price visualization</div>
+          <ol class="subtasks">
+            <li>Format the x-axis tick labels</li>
+            <li>Add the current price to the backend API</li>
+            <li>Display it as a reference line on the chart</li>
+          </ol>
+        </div>
+        <div class="task-img fin"><img src="figures/paper/finance-dashboard.png" alt="Task 1 expected result: stock chart with tick markers and a current price line"></div>
+      </div>
+      <div class="task" data-r style="--d:3">
+        <div class="task-txt">
+          <div class="task-h"><span class="pill gold">Task 2</span> MVP Predictor</div>
+          <div class="lang">Python pipeline predicting NBA MVP rankings</div>
+          <ol class="subtasks">
+            <li>Extend the scraper with advanced statistics</li>
+            <li>Adjust <span class="code">n_estimators</span> of the XGBRanker model</li>
+            <li>Improve the chart's type and color scheme</li>
+          </ol>
+        </div>
+        <div class="task-img mvp"><img src="figures/paper/mvp-predictor.png" alt="Task 2 example visualization: grouped bar chart of MVP rankings"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot"><span class="pg"></span></div>
+</div></div>
+</section>
+
+<!-- ============================================================ OVERALL RESULTS -->
+<section class="slide" data-title="Usability and Control" data-group="Evaluation">
+<div class="frame"><div class="stage">
+  <div class="eyebrow"><span class="rq">Results</span>Overall</div>
+  <h2 class="title">Higher correctness and usability at comparable time</h2>
+
+  <div class="body s-overall">
+    <div class="big4 cmp">
+      <div data-r><div class="lbl">Task correctness</div><div class="stat">95.0<small>%</small></div><div class="vs-b">vs. 81.7% Baseline</div></div>
+      <div data-r style="--d:1"><div class="lbl">SUS score</div><div class="stat">77.07</div><div class="vs-b">vs. 66.23 Baseline</div></div>
+      <div data-r style="--d:2"><div class="lbl">Sense of control <span>Mdn</span></div><div class="stat">6.0</div><div class="vs-b">vs. 5.0 Baseline</div></div>
+      <div data-r style="--d:3"><div class="lbl">Satisfaction with edits <span>Mdn</span></div><div class="stat">7.0</div><div class="vs-b">vs. 5.0 Baseline</div></div>
+    </div>
+    <p class="note same" data-r style="--d:4"><i class="fa-solid fa-equals"></i> Comparable completion time (20.85 vs. 19.30 min), ease of use, learnability, and NASA-TLX workload.</p>
+
+    <div class="row two-cards">
+      <div class="card grow fcol" data-r style="--d:5">
+        <div class="fhead"><div class="icon-badge"><i class="fa-solid fa-hand"></i></div><div><div class="fnum">Sense of control</div><h3>Comprehend-then-act, contrasting with vibe coding</h3></div></div>
+        <p class="small">Enforced comprehension and shared grounding: the NL summary served as a shared ground for validating intent and system interpretation.</p>
+        <div class="quotes"><span class="q">black box more transparent</span><span class="who">P11</span><span class="q">greater confidence it would work</span><span class="who">P12</span></div>
+      </div>
+      <div class="card grow fcol" data-r style="--d:6">
+        <div class="fhead"><div class="icon-badge"><i class="fa-solid fa-code-branch"></i></div><div><div class="fnum">Task characteristics</div><h3>Declarative vs. procedural tasks</h3></div></div>
+        <div class="dp">
+          <div><span class="dp-k">UI changes</span><span class="small">preferred direct instructions</span><span class="q">I care more about the final effect</span><span class="who">P2</span></div>
+          <div><span class="dp-k">Backend algorithms</span><span class="small">used the summary-mediated path</span><span class="q">strongly need additional representation to help understand changes</span><span class="who">P12</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot"><span class="pg"></span></div>
+</div></div>
+</section>
+
+<!-- ============================================================ WORKFLOW SHIFT -->
+<section class="slide" data-title="NL-Centric Workflow" data-group="Evaluation">
+<div class="frame"><div class="stage">
+  <div class="eyebrow"><span class="rq">Results</span>Interaction logs</div>
+  <h2 class="title">NaturalEdit shifted modification toward an <span class="hl">NL-centric</span> workflow</h2>
+
+  <div class="body row s-flow">
+    <figure class="fig flow" data-r>
+      <img src="figures/paper/interaction-transition.svg" alt="Transition graphs of user workflows in Baseline and NaturalEdit">
+    </figure>
+    <div class="col grow flow-side">
+      <div class="fs" data-r style="--d:1">
+        <div class="stat">72<small>/104</small></div>
+        <p class="small">modifications completed via the <b>modified summary</b> in NaturalEdit</p>
+      </div>
+      <div class="fs dim" data-r style="--d:2">
+        <div class="stat">95<small>/111</small></div>
+        <p class="small">via <b>direct-instruction fallback</b> in Baseline, where manual summary editing felt <span class="q">cumbersome and taking significant effort</span> (P5)</p>
+      </div>
+      <div class="fs gold-l" data-r style="--d:3">
+        <div class="stat gold">488</div>
+        <p class="small"><b>Inspect Mapping</b>: the most frequent action, bridging NL and code</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot"><span class="pg"></span></div>
+</div></div>
+</section>
+
+<!-- ============================================================ PER-DIMENSION -->
+<section class="slide" data-title="Feature-Level Findings" data-group="Evaluation">
+<div class="frame"><div class="stage">
+  <div class="eyebrow"><span class="rq">Results</span>Cognitive dimensions</div>
+  <h2 class="title">Each feature supported its targeted dimension</h2>
+
+  <div class="body s-cd">
+    <figure class="fig cdfig" data-r>
+      <img src="figures/paper/likert-non-comparison.svg" alt="Participant ratings of the four core features, one per cognitive dimension">
+    </figure>
+    <div class="cd4">
+      <div class="card cdc" data-r style="--d:1">
+        <div class="fnum">Abstraction Gradient</div>
+        <h3>Top-down comprehension on demand</h3>
+        <div class="kv"><span class="stat sm">6.5</span><span class="note">vs. 4.5 Mdn, perceived code comprehension</span></div>
+        <p class="small">Start from a <span class="q">coarser view for initial understanding</span> (P3); high granularity and bullets favored for editing</p>
+      </div>
+      <div class="card cdc" data-r style="--d:2">
+        <div class="fnum">Closeness of Mapping</div>
+        <h3>Mapping prepared and validated edits</h3>
+        <div class="kv"><span class="stat sm gold">60<small>/79</small></span><span class="note">summary edits directly preceded by mapping</span></div>
+        <p class="small"><span class="q">helped me not only understand the code but also plan how to change it</span> (P5)</p>
+      </div>
+      <div class="card cdc" data-r style="--d:3">
+        <div class="fnum">Viscosity</div>
+        <h3>Instructions did the heavy lifting</h3>
+        <div class="kv"><span class="stat sm">58<small>/79</small></span><span class="note">summary commits with no manual refinement</span></div>
+        <p class="small">Concise instructions (12 words) expanded into precise summary edits (18 words), e.g., <i>best</i> <i class="fa-solid fa-arrow-right"></i> <i>highest</i> NDCG</p>
+      </div>
+      <div class="card cdc" data-r style="--d:4">
+        <div class="fnum">Visibility &amp; Consistency</div>
+        <h3>Diffs as a basis for validation</h3>
+        <div class="kv"><span class="stat sm gold">6.0</span><span class="note">vs. 4.0 Mdn, validating modified code</span></div>
+        <p class="small">Like reviewing a GitHub commit for <span class="q">accidental changes</span> (P6)</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot"><span class="pg"></span></div>
+</div></div>
+</section>
+
+<!-- ============================================================ DISCUSSION -->
+<section class="slide" data-title="Spec-Driven Development" data-group="Wrap-up">
+<div class="frame"><div class="stage">
+  <div class="eyebrow">Discussion</div>
+  <h2 class="title">Generalizing to spec-driven development</h2>
+  <p class="lead">In tools such as GitHub Spec Kit and Amazon Kiro, lightweight NL documents (e.g., <span class="code">design.md</span>, <span class="code">tasks.md</span>) serve as the primary medium for human-AI interaction.</p>
+
+  <div class="body row s-spec">
+    <div class="tri" data-r>
+      <svg class="tri-lines" viewBox="0 0 520 400" aria-hidden="true">
+        <polygon points="260,62 70,330 450,330" />
+      </svg>
+      <div class="node n-top"><i class="fa-solid fa-file-lines"></i><b>NL artifact</b></div>
+      <div class="node n-left"><i class="fa-solid fa-user"></i><b>Developer intent</b></div>
+      <div class="node n-right"><i class="fa-solid fa-code"></i><b class="nw">AI-generated code</b></div>
+      <div class="tri-c">Three-way<br>alignment</div>
+    </div>
+
+    <div class="col grow spec-right">
+      <div class="sp" data-r style="--d:1"><span class="fn">F1</span><div><b>Adaptive representation</b><p class="small">Navigate NL artifacts across levels of abstraction</p></div></div>
+      <div class="sp" data-r style="--d:2"><span class="fn">F2</span><div><b>Interactive mapping</b><p class="small">Link spec items to their implementations, making NL documents live and navigable</p></div></div>
+      <div class="sp" data-r style="--d:3"><span class="fn">F3</span><div><b>Bidirectional synchronization</b><p class="small">Modify NL to drive code changes while reflecting those changes back</p></div></div>
+      <p class="punch" data-r style="--d:4">Developers must verify not only that the code is correct, but also that the NL artifact captures their intent and that the AI's actions remain consistent with it.</p>
+      <p class="src cite" data-r style="--d:4">See also: Programming by Chat <span class="venue-tag">ASE '26</span> How Coding Agents Fail Their Users <span class="venue-tag">EMNLP '26</span></p>
+    </div>
+  </div>
+
+  <div class="foot"><span class="pg"></span></div>
+</div></div>
+</section>
+
+<!-- ============================================================ CLOSING -->
+<section class="slide" data-title="Thank You" data-group="Wrap-up">
+<div class="frame"><div class="stage s-close">
+
+  <div class="c-top">
+    <img src="figures/logos/uist-2026-horizontal.svg" alt="UIST 2026 Detroit" style="height:84px">
+    <img src="figures/logos/notre-dame.png" alt="University of Notre Dame" style="height:66px">
+    <img src="figures/logos/vanderbilt.png" alt="Vanderbilt University" style="height:62px">
+    <span class="grow"></span>
+    <img class="logo-round" src="figures/logos/sandwich.svg" alt="SaNDwich Lab" style="height:104px">
+  </div>
+
+  <div class="c-title center">
+    <h2>NaturalEdit: Code Modification through Direct Interaction with Adaptive Natural Language Representation</h2>
+    <p>Ningzhi Tang, David Meininger, Gelei Xu, Yiyu Shi, Yu Huang, Collin McMillan, Toby Jia-Jun Li</p>
+    <p class="mail">{ntang, dmeining, gxu4, yshi4, cmc, toby.j.li}@nd.edu, yu.huang@vanderbilt.edu</p>
+  </div>
+
+  <div class="c-mid">
+    <div class="c-left">
+      <div class="c-me">
+        <img class="c-photo" src="figures/headshot.jpg" alt="Ningzhi Tang">
+        <div class="c-card">
+          <div class="c-name">Ningzhi Tang</div>
+          <a href="https://www.nztang.com"><i class="ic fa-solid fa-globe"></i>nztang.com</a>
+          <a href="mailto:ntang@nd.edu"><i class="ic fa-solid fa-envelope"></i>ntang@nd.edu</a>
+          <a href="https://github.com/TTangNingzhi"><i class="ic fa-brands fa-github"></i>TTangNingzhi</a>
+          <a href="https://www.linkedin.com/in/ningzhi-tang"><i class="ic fa-brands fa-linkedin"></i>in/ningzhi-tang</a>
+        </div>
+      </div>
+      <a class="c-try" href="https://marketplace.visualstudio.com/items?itemName=sandwich-lab.naturaledit">
+        <img src="figures/logos/naturaledit.svg" alt="">
+        <div><div class="try-h">Try <span class="gold-word">Natural</span>Edit in VS Code</div><div class="try-s">VS Code Marketplace: sandwich-lab.naturaledit</div></div>
+      </a>
+    </div>
+    <div class="c-right">
+      <div class="c-links">
+        <a href="https://github.com/ND-SaNDwichLAB/naturaledit-replication-package"><i class="fa-brands fa-github"></i> ND-SaNDwichLAB/naturaledit-replication-package</a>
+        <a href="https://github.com/TTangNingzhi/NaturalEdit"><i class="fa-brands fa-github"></i> TTangNingzhi/NaturalEdit</a>
+      </div>
+      <div class="c-take">
+        <div class="tk-h">Takeaways</div>
+        <div class="tk"><span class="n">1</span><div><b>Adaptive representation:</b> adjustable structure and granularity support top-down comprehension</div></div>
+        <div class="tk"><span class="n">2</span><div><b>Interactive mapping:</b> explicit, structurally stable links externalize NL-code tracing</div></div>
+        <div class="tk"><span class="n">3</span><div><b>Intent-driven synchronization:</b> editable NL diffs make the system's interpretation explicit and correctable</div></div>
+        <div class="tk"><span class="n">4</span><div><b>Evaluation:</b> technically viable; improved comprehension, intent articulation, and validation with 20 developers</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="c-bottom">
+    <p class="c-ack">This research was supported in part by a Google Cloud Research Credit Award, a Google Research Scholar Award, a gift from Adobe, an Edison Innovation Fellowship from the Notre Dame IDEA Center, and NSF grants CCF-2211428, CCF-2315887, CCF-2100035, CCF-2211429, and CCF-2442682. Any opinions, findings, or recommendations expressed here are those of the authors and do not necessarily reflect the views of the sponsors.</p>
+    <div class="c-logos">
+      <img src="figures/logos/google.png" alt="Google" style="height:40px">
+      <img src="figures/logos/adobe.png" alt="Adobe" style="height:33px">
+      <img src="figures/logos/nsf.png" alt="NSF" style="height:56px">
+    </div>
+  </div>
+
+</div></div>
+</section>
+
+<!-- ============================================================ ALT TITLE (draft: pick one) -->
+<section class="slide" data-title="Alt Title: Headshots" data-group="Draft">
+<div class="frame"><div class="stage s-title2">
+
+  <img class="uist-h" src="figures/logos/uist-2026-horizontal.svg" alt="UIST 2026 Detroit">
+
+  <h1><img class="ne-icon" src="figures/logos/naturaledit.svg" alt=""><span class="gold-word">Natural</span>Edit</h1>
+  <p class="subtitle">Code Modification through Direct Interaction with Adaptive Natural Language Representation</p>
+
+  <div class="faces">
+    <figure><img src="figures/headshot.jpg" alt=""><figcaption><b>Ningzhi Tang</b></figcaption></figure>
+    <figure><img src="figures/authors/david-meininger.png" alt=""><figcaption>David Meininger</figcaption></figure>
+    <figure><img src="figures/authors/gelei-xu.png" alt="" style="object-position:50% 30%"><figcaption>Gelei Xu</figcaption></figure>
+    <figure><img src="figures/authors/yiyu-shi.png" alt=""><figcaption>Yiyu Shi</figcaption></figure>
+    <figure><img src="figures/authors/yu-huang.png" alt="" style="object-position:50% 30%"><figcaption>Yu Huang</figcaption></figure>
+    <figure><img src="figures/authors/collin-mcmillan.png" alt=""><figcaption>Collin McMillan</figcaption></figure>
+    <figure><img src="figures/authors/toby-li.png" alt=""><figcaption>Toby Jia-Jun Li</figcaption></figure>
+  </div>
+
+  <div class="logos2">
+    <img src="figures/logos/notre-dame.png" alt="University of Notre Dame" style="height:62px">
+    <img src="figures/logos/vanderbilt.png" alt="Vanderbilt University" style="height:58px">
+    <span class="grow"></span>
+    <img class="logo-round" src="figures/logos/sandwich.svg" alt="SaNDwich Lab" style="height:80px">
+    <img src="figures/logos/lab-scl.png" alt="Lab logo" style="height:80px">
+    <img class="logo-round" src="figures/logos/lab-robot.png" alt="Lab logo" style="height:80px">
+    <img class="logo-round" src="figures/logos/lab-mind.png" alt="Lab logo" style="height:80px">
+  </div>
+
+</div></div>
+</section>
+
+</main>
+
+<script src="js/slides.js"></script>
+</body>
+</html>
