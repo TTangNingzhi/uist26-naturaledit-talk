@@ -205,10 +205,9 @@ a.venue-tag i { margin-left: 3px; font-size: 0.8em; }
 .dg { display: flex; flex-direction: column; }
 .dim-name { margin-bottom: 14px; font-size: 18px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--nd-blue-bright); }
 
-.gap { display: flex; flex-direction: column; gap: 16px; height: 262px; padding: 26px 26px; border-radius: 16px; background: #f6f7f9; }
+.gap { display: flex; flex-direction: column; gap: 16px; height: 210px; padding: 26px 26px; border-radius: 16px; background: #f6f7f9; }
 .gap i { font-size: 34px; color: var(--muted); }
 .gap p { margin: 0; font-size: 23px; line-height: 1.4; color: var(--ink-2); }
-.gap .obs { margin-top: auto; padding-top: 12px; border-top: 1px solid var(--line); font-size: 17px; font-style: italic; color: var(--muted); }
 
 .dg-arrow { display: grid; place-items: center; height: 54px; font-size: 22px; color: var(--nd-gold); }
 
@@ -230,26 +229,13 @@ a.venue-tag i { margin-left: 3px; font-size: 0.8em; }
 
 /* ------------------------------------------------------------ F1 */
 
-.s-f1 { gap: 34px; align-items: center; }
-.f1fig { flex: none; width: 1000px; }
-.f1-notes { gap: 16px; justify-content: center; }
-.f1-notes .card { padding: 18px 22px; }
-.f1-notes .card h4 i { margin-right: 6px; color: var(--nd-blue-bright); }
-.f1-notes .card p { margin-top: 8px; }
-.f1-notes .small { font-size: 20px; }
-.note.gen { margin: 0; font-size: 18px; }
-.note.gen i { margin-right: 6px; color: var(--nd-gold-dark); }
+.s-f1 { display: flex; align-items: center; justify-content: center; padding-bottom: 20px; }
+.f1fig { width: 1120px; }
 
 /* ------------------------------------------------------------ F2 */
 
-.s-f2 { display: flex; flex-direction: column; gap: 26px; margin-top: 30px; }
-.mapfig { width: 1290px; align-self: center; }
-.map-notes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-.mn { display: flex; gap: 16px; align-items: flex-start; padding: 18px 22px; border: 1.5px solid var(--line); border-radius: 14px; }
-.mn h3 { margin: 2px 0 0; font-size: 22px; }
-.mn .small { margin: 6px 0 0; font-size: 18.5px; line-height: 1.42; }
-.mn .code { font-size: 0.8em; }
-.mn:nth-child(2) .icon-badge { background: var(--warm-light); color: var(--nd-gold-dark); }
+.s-f2 { display: flex; align-items: center; justify-content: center; padding-bottom: 20px; }
+.mapfig { width: 1432px; }
 
 /* ------------------------------------------------------ AST alignment */
 
@@ -318,22 +304,15 @@ a.venue-tag i { margin-left: 3px; font-size: 0.8em; }
 
 /* ------------------------------------------------------------ F3 */
 
-.s-f3 { display: flex; flex-direction: column; margin-top: 28px; }
+.s-f3 { display: flex; flex-direction: column; justify-content: center; padding-bottom: 20px; }
 .fig { margin: 0; }
 .fig img { display: block; width: 100%; height: auto; }
-.sync { width: 1240px; align-self: center; }
+.sync { width: 1432px; align-self: center; }
 
 .legend3 { display: flex; justify-content: center; gap: 32px; margin-top: 10px; font-size: 16px; color: var(--muted); }
 .legend3 i { display: inline-block; width: 34px; margin-right: 8px; vertical-align: middle; border-top: 2px solid var(--ink-2); }
 .legend3 i.dashed { border-top-style: dashed; }
 
-.steps3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: auto; }
-.step3 { display: flex; flex-direction: column; gap: 8px; padding: 16px 20px; border: 1.5px solid var(--line); border-radius: 14px; }
-.step3 .sn { display: flex; gap: 6px; }
-.step3 .sn span { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--nd-blue); color: #fff; font-size: 15px; font-weight: 700; }
-.step3 h3 { margin: 0; font-size: 21px; line-height: 1.25; }
-.step3 p { margin: 6px 0 0; font-size: 17.5px; line-height: 1.42; color: var(--ink-2); }
-.step3 b.gold { color: var(--nd-gold-dark); }
 
 /* ------------------------------------------------------------ demo */
 

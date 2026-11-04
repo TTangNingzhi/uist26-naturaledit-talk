@@ -161,25 +161,25 @@
   <div class="body s-dg">
     <div class="dg" data-r>
       <div class="dim-name">Abstraction Gradient</div>
-      <div class="gap"><i class="fa-solid fa-lock"></i><p>A fixed abstraction gradient that cannot adapt across cognitive tasks</p><div class="obs">In our study: overly rigid representations</div></div>
+      <div class="gap"><i class="fa-solid fa-lock"></i><p>A fixed abstraction gradient that cannot adapt across cognitive tasks</p></div>
       <div class="dg-arrow"><i class="fa-solid fa-arrow-down"></i></div>
       <div class="goal"><span class="tag">DG1</span>Enable an adaptive abstraction gradient</div>
     </div>
     <div class="dg" data-r style="--d:1">
       <div class="dim-name">Closeness of Mapping</div>
-      <div class="gap"><i class="fa-solid fa-link-slash"></i><p>Implicit NL-code links burden working memory</p><div class="obs">In our study: implicit NL-code links</div></div>
+      <div class="gap"><i class="fa-solid fa-link-slash"></i><p>Implicit NL-code links burden working memory</p></div>
       <div class="dg-arrow"><i class="fa-solid fa-arrow-down"></i></div>
       <div class="goal"><span class="tag">DG2</span>Ensure tight and interactive mapping</div>
     </div>
     <div class="dg" data-r style="--d:2">
       <div class="dim-name">Viscosity</div>
-      <div class="gap"><i class="fa-solid fa-pencil"></i><p>High effort in translating vague intent into precise summary edits</p><div class="obs">In our study: disproportionate editing effort</div></div>
+      <div class="gap"><i class="fa-solid fa-pencil"></i><p>High effort in translating vague intent into precise summary edits</p></div>
       <div class="dg-arrow"><i class="fa-solid fa-arrow-down"></i></div>
       <div class="goal"><span class="tag">DG3</span>Minimize viscosity in intent specification</div>
     </div>
     <div class="dg" data-r style="--d:3">
       <div class="dim-name">Visibility &amp; Consistency</div>
-      <div class="gap"><i class="fa-solid fa-eye-slash"></i><p>Summaries regenerated without surfacing inspectable diffs</p><div class="obs">In our study: summaries fully regenerated after edits</div></div>
+      <div class="gap"><i class="fa-solid fa-eye-slash"></i><p>Summaries regenerated without surfacing inspectable diffs</p></div>
       <div class="dg-arrow"><i class="fa-solid fa-arrow-down"></i></div>
       <div class="goal"><span class="tag">DG4</span>Maintain high visibility and consistency</div>
     </div>
@@ -240,23 +240,11 @@
   <h2 class="title"><span class="hl">Adaptive</span> multi-faceted representation</h2>
   <p class="lead">NL summaries adjustable along two orthogonal dimensions: <b>Structure</b> and <b>Granularity</b>.</p>
 
-  <div class="body row s-f1">
+  <div class="body s-f1">
     <figure class="fig f1fig" data-r>
       <img src="figures/paper/structure-granularity.svg" alt="Six NL representations of one function: paragraph or bulleted, at low, medium, or high granularity">
     </figure>
 
-    <div class="col grow f1-notes">
-      <div class="card" data-r style="--d:1">
-        <h4><i class="fa-regular fa-square-check"></i> Structure</h4>
-        <p class="small">Bulleted lists mirror code's logic for procedural understanding; paragraphs support a more holistic, narrative view.</p>
-      </div>
-      <div class="card" data-r style="--d:2">
-        <h4><i class="fa-solid fa-sliders"></i> Granularity</h4>
-        <p class="small">From what a function does, to how it works, to a line-by-line explanation, analogous to <b>semantic zooming</b>.</p>
-      </div>
-      <p class="note gen" data-r style="--d:3"><i class="fa-solid fa-bolt"></i> All six variants come from a single structured LLM prompt, enabling instantaneous, consistent switching.</p>
-      <p class="note gen" data-r style="--d:4"><i class="fa-solid fa-sitemap"></i> Fluid code scope navigation: move up through the AST path, or down by clicking a summary segment.</p>
-    </div>
   </div>
 
   <div class="foot"><span class="pg"></span></div>
@@ -274,11 +262,6 @@
     <figure class="fig mapfig" data-r>
       <img src="figures/paper/interactive-mapping.svg" alt="As the cursor moves from one summary segment to the next, the highlighted code lines update">
     </figure>
-    <div class="map-notes">
-      <div class="mn" data-r style="--d:1"><div class="icon-badge"><i class="fa-solid fa-arrow-pointer"></i></div><div><h3>Hover and click</h3><p class="small">Hovering highlights the corresponding code; clicking navigates to and selects that scope, decoupling comprehension from navigation.</p></div></div>
-      <div class="mn" data-r style="--d:2"><div class="icon-badge"><i class="fa-solid fa-diagram-project"></i></div><div><h3>Fine-grained links</h3><p class="small">Generated in parallel for each variant as (<span class="code">summaryComponent</span>, <span class="code">codeSegments</span>) pairs, with line numbers for precise alignment.</p></div></div>
-      <div class="mn" data-r style="--d:3"><div class="icon-badge"><i class="fa-solid fa-anchor"></i></div><div><h3>Structurally stable</h3><p class="small">Links must remain valid as code evolves, which simple text-based anchoring cannot guarantee.</p></div></div>
-    </div>
   </div>
 
   <div class="foot"><span class="pg"></span></div>
@@ -406,20 +389,6 @@
     <div class="legend3" data-r style="--d:1">
       <span><i class="solid"></i> developer actions</span>
       <span><i class="dashed"></i> system actions</span>
-    </div>
-    <div class="steps3">
-      <div class="step3" data-r style="--d:1">
-        <div class="sn"><span>1</span><span>2</span><span>3</span></div>
-        <div><h3>Intent articulation &amp; NL refinement</h3><p>The developer issues a high-level instruction; the system proposes a <b>summary diff</b> as an editable intermediate artifact, validated or refined <b>before any code is modified</b>.</p></div>
-      </div>
-      <div class="step3" data-r style="--d:2">
-        <div class="sn"><span>4</span><span>5</span></div>
-        <div><h3>Code modification &amp; synchronization</h3><p>Upon approval, the code change follows the approved NL diff; the summary is regenerated as <b class="gold">Incremental Diffs</b> that isolate the semantic impact.</p></div>
-      </div>
-      <div class="step3" data-r style="--d:3">
-        <div class="sn"><span>6</span><span>7</span></div>
-        <div><h3>Multi-level validation</h3><p><b>Global</b>: inspect summary and code diffs side by side. <b>Local</b>: use interactive mapping on highlighted diff regions.</p></div>
-      </div>
     </div>
   </div>
 
