@@ -248,73 +248,22 @@ a.venue-tag i { margin-left: 3px; font-size: 0.8em; }
 
 /* ------------------------------------------------------------ F2 */
 
-.s-f2 { display: flex; align-items: center; justify-content: center; padding-bottom: 20px; }
-.mapfig { width: 1432px; }
+.s-f2 { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 26px; padding-bottom: 10px; }
+.mapfig { width: 1160px; }
 
-/* ------------------------------------------------------ AST alignment */
-
-.s-ast { gap: 30px; margin-top: 30px; align-items: stretch; }
-
-.ast-left { flex: none; width: 790px; display: flex; flex-direction: column; gap: 12px; }
-.ast-seg { display: flex; align-items: center; gap: 12px; }
-.ast-seg .k { font-size: 15px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
-.seg-chip { padding: 4px 12px; border-radius: 8px; background: rgba(211, 159, 16, 0.22); font-size: 20px; color: var(--ink); }
-
-.ast-ide { flex: 1; display: flex; flex-direction: column; }
-.ast-tabs { display: flex; border-bottom: 1px solid var(--line-soft); background: #f7f8fa; }
-.ast-tabs button {
-  padding: 10px 16px;
-  border: 0;
-  border-right: 1px solid var(--line-soft);
-  border-top: 2px solid transparent;
-  background: none;
-  font: inherit;
-  font-size: 15px;
-  color: var(--muted);
-  cursor: pointer;
-}
-.ast-tabs button:focus { outline: none; }
-.ast-tabs button i { margin-right: 6px; }
-.ast-tabs button.on { border-top-color: var(--nd-gold); background: #fff; color: var(--ink); font-weight: 600; }
-
-.ast-code { padding: 12px 14px 12px 4px; font-size: 15.5px; line-height: 1.85; white-space: normal; }
-.ast-code .cl { display: block; min-height: 1.85em; margin: 0 -14px 0 -4px; padding: 0 14px 0 4px; white-space: pre; }
-.ast-code .cl.chg .ln, .ast-code .cl.chg-in .ln { color: var(--nd-blue-bright); font-weight: 700; }
-.ast-code .cl.hit { background: rgba(211, 159, 16, 0.22); }
-.ast-code .cl.ref { box-shadow: inset 4px 0 0 var(--nd-blue-bright); }
-.ast-code .cl.ref.bad { box-shadow: inset 4px 0 0 #b4413a; background-image: linear-gradient(90deg, rgba(180, 65, 58, 0.07), transparent 60%); }
-
-.ast-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 22px; font-size: 15.5px; color: var(--muted); }
-.ast-legend .sw { display: inline-block; width: 22px; height: 14px; margin-right: 6px; vertical-align: -1px; border-radius: 3px; }
-.ast-legend .sw.hit { background: rgba(211, 159, 16, 0.32); }
-.ast-legend .sw.ref { box-shadow: inset 4px 0 0 var(--nd-blue-bright); background: #f1f3f6; }
-.ast-legend .hint { margin-left: auto; color: var(--faint); }
-.ast-legend .hint i { margin-right: 4px; }
-
-.ast-right { gap: 18px; }
-.anchor-card { display: flex; flex-direction: column; gap: 8px; padding: 20px 24px; }
-.anchor-card h4 { margin-bottom: 4px !important; }
-.anchor-card h4 i { margin-right: 6px; color: var(--nd-gold-dark); }
-.anchor-card .note { margin: 8px 0 0; font-size: 17px; }
-.a-k { font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--nd-blue-bright); }
-.a-k span { margin-left: 6px; font-weight: 500; letter-spacing: 0; text-transform: none; color: var(--faint); }
-.path { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 4px; }
-.path span { padding: 3px 10px; border: 1px solid var(--sky-dark); border-radius: 6px; background: #fff; font-family: var(--mono); font-size: 14.5px; color: var(--nd-blue); }
-.path span b { font-weight: 600; color: var(--ink); }
-.path span em { margin-left: 4px; font-style: normal; color: var(--faint); }
-.path span em.moved { color: var(--nd-gold-dark); font-weight: 700; }
-.path span.gone { border-color: #e2b4b0; color: #b4413a; text-decoration: line-through; }
-.path i { font-size: 11px; color: var(--faint); }
-.m { font-family: var(--serif); font-style: italic; font-size: 1.08em; color: var(--ink); white-space: nowrap; }
-
-.verdicts { display: grid; gap: 14px; }
-.vd { padding: 14px 20px; border-radius: 12px; background: #f6f7f9; }
-.vk { margin-bottom: 6px; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
-.vv { display: flex; align-items: baseline; gap: 10px; font-size: 19px; line-height: 1.4; color: var(--ink-2); }
-.vv .pill { flex: none; padding: 1px 12px; font-size: 15px; }
-.vv.ok i { color: var(--nd-blue-bright); }
-.vv.bad i { color: #b4413a; }
-.vv .code { font-size: 0.82em; }
+.ast-band { display: flex; align-items: center; gap: 26px; align-self: stretch; padding: 18px 28px; border: 2px solid var(--nd-gold); border-radius: 16px; background: var(--warm-light); }
+.ab-h { flex: none; width: 270px; display: flex; align-items: center; gap: 14px; }
+.ab-h > i { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 14px; background: var(--nd-gold); color: #fff; font-size: 24px; }
+.ab-h b { display: block; font-size: 21px; line-height: 1.2; color: var(--nd-blue); }
+.ab-h span { display: block; margin-top: 2px; font-size: 18px; color: var(--ink-2); }
+.ab-anchor { flex: none; display: grid; gap: 8px; padding-left: 26px; border-left: 1.5px solid rgba(174, 145, 66, 0.4); }
+.ab-row { display: flex; align-items: center; gap: 7px; }
+.ab-k { width: 150px; white-space: nowrap; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--nd-gold-dark); }
+.ab-row .chip { padding: 2px 10px; border: 1px solid var(--sky-dark); border-radius: 6px; background: #fff; font-family: var(--mono); font-size: 15px; color: var(--nd-blue); }
+.ab-row i { font-size: 11px; color: var(--faint); }
+.ab-states { flex: 1; min-width: 0; display: grid; gap: 8px; padding-left: 26px; border-left: 1.5px solid rgba(174, 145, 66, 0.4); }
+.ab-states > div { display: flex; align-items: center; gap: 12px; font-size: 17px; color: var(--ink-2); }
+.ab-states .pill { flex: none; width: 96px; justify-content: center; padding: 1px 10px; font-size: 15px; background: #fff; }
 
 /* ------------------------------------------------------------ F3 */
 
@@ -323,9 +272,6 @@ a.venue-tag i { margin-left: 3px; font-size: 0.8em; }
 .fig img { display: block; width: 100%; height: auto; }
 .sync { width: 1432px; align-self: center; }
 
-.legend3 { display: flex; justify-content: center; gap: 32px; margin-top: 10px; font-size: 16px; color: var(--muted); }
-.legend3 i { display: inline-block; width: 34px; margin-right: 8px; vertical-align: middle; border-top: 2px solid var(--ink-2); }
-.legend3 i.dashed { border-top-style: dashed; }
 
 
 /* ------------------------------------------------------------ demo */

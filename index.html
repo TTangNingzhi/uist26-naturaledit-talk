@@ -258,112 +258,15 @@
     <figure class="fig mapfig" data-r>
       <img src="figures/paper/interactive-mapping.svg" alt="As the cursor moves from one summary segment to the next, the highlighted code lines update">
     </figure>
-  </div>
-
-  <div class="foot"><span class="pg"></span></div>
-</div></div>
-</section>
-
-<!-- ============================================================ AST -->
-<section class="slide" data-title="Structural Alignment" data-group="NaturalEdit">
-<div class="frame"><div class="stage">
-  <div class="eyebrow"><span class="rq">F2</span>Structural alignment engine</div>
-  <h2 class="title">Persistent <span class="hl">AST anchors</span> keep mappings valid as code evolves</h2>
-
-  <div class="body row s-ast" data-steps="4">
-    <div class="ast-left" data-r>
-      <div class="ast-seg"><span class="k">Summary segment</span><span class="seg-chip">formats each qualifying user's name and email into a string</span></div>
-      <div class="ide ast-ide">
-        <div class="ast-tabs">
-          <button data-go="0"><i class="fa-brands fa-python"></i> Original</button>
-          <button data-go="1"><i class="fa-solid fa-align-left"></i> Reformat</button>
-          <button data-go="2"><i class="fa-solid fa-plus"></i> Add helper above</button>
-          <button data-go="3"><i class="fa-solid fa-pen"></i> Rewrite loop</button>
-        </div>
-<pre class="py ast-code" data-show="0"><span class="cl"><span class="ln">1</span><span class="k">def</span> <span class="f">process_user_data</span>(users):</span>
-<span class="cl"><span class="ln">2</span>    active_users = [u <span class="k">for</span> u <span class="k">in</span> users <span class="k">if</span> u[<span class="s">'status'</span>] == <span class="s">'active'</span>]</span>
-<span class="cl"><span class="ln">3</span>    <span class="k">from</span> datetime <span class="k">import</span> datetime, timedelta</span>
-<span class="cl"><span class="ln">4</span>    one_year_ago = datetime.<span class="f">now</span>() - <span class="f">timedelta</span>(days=<span class="n">365</span>)</span>
-<span class="cl"><span class="ln">5</span>    long_term_users = [</span>
-<span class="cl"><span class="ln">6</span>        u <span class="k">for</span> u <span class="k">in</span> active_users <span class="k">if</span> u[<span class="s">'join_date'</span>] &lt; one_year_ago</span>
-<span class="cl"><span class="ln">7</span>    ]</span>
-<span class="cl"><span class="ln">8</span>    results = []</span>
-<span class="cl ref hit"><span class="ln">9</span>    <span class="k">for</span> u <span class="k">in</span> long_term_users:</span>
-<span class="cl ref hit"><span class="ln">10</span>        results.<span class="f">append</span>(<span class="s">f"{u['name']} &lt;{u['email']}&gt;"</span>)</span>
-<span class="cl"><span class="ln">11</span>    <span class="k">return</span> results</span></pre>
-<pre class="py ast-code" data-show="1"><span class="cl"><span class="ln">1</span><span class="k">def</span> <span class="f">process_user_data</span>(users):</span>
-<span class="cl chg"><span class="ln">2</span>    active_users = [</span>
-<span class="cl chg"><span class="ln">3</span>        u <span class="k">for</span> u <span class="k">in</span> users <span class="k">if</span> u[<span class="s">'status'</span>] == <span class="s">'active'</span></span>
-<span class="cl chg"><span class="ln">4</span>    ]</span>
-<span class="cl"><span class="ln">5</span>    <span class="k">from</span> datetime <span class="k">import</span> datetime, timedelta</span>
-<span class="cl"><span class="ln">6</span>    one_year_ago = datetime.<span class="f">now</span>() - <span class="f">timedelta</span>(days=<span class="n">365</span>)</span>
-<span class="cl"><span class="ln">7</span>    long_term_users = [</span>
-<span class="cl"><span class="ln">8</span>        u <span class="k">for</span> u <span class="k">in</span> active_users <span class="k">if</span> u[<span class="s">'join_date'</span>] &lt; one_year_ago</span>
-<span class="cl ref bad"><span class="ln">9</span>    ]</span>
-<span class="cl ref bad"><span class="ln">10</span>    results = []</span>
-<span class="cl hit"><span class="ln">11</span>    <span class="k">for</span> u <span class="k">in</span> long_term_users:</span>
-<span class="cl hit"><span class="ln">12</span>        results.<span class="f">append</span>(<span class="s">f"{u['name']} &lt;{u['email']}&gt;"</span>)</span>
-<span class="cl"><span class="ln">13</span>    <span class="k">return</span> results</span></pre>
-<pre class="py ast-code" data-show="2"><span class="cl chg"><span class="ln">1</span><span class="k">def</span> <span class="f">format_user</span>(u):</span>
-<span class="cl chg"><span class="ln">2</span>    <span class="k">return</span> <span class="s">f"{u['name']} &lt;{u['email']}&gt;"</span></span>
-<span class="cl chg"><span class="ln">3</span></span>
-<span class="cl"><span class="ln">4</span><span class="k">def</span> <span class="f">process_user_data</span>(users):</span>
-<span class="cl"><span class="ln">5</span>    active_users = [u <span class="k">for</span> u <span class="k">in</span> users <span class="k">if</span> u[<span class="s">'status'</span>] == <span class="s">'active'</span>]</span>
-<span class="cl"><span class="ln">6</span>    <span class="k">from</span> datetime <span class="k">import</span> datetime, timedelta</span>
-<span class="cl"><span class="ln">7</span>    one_year_ago = datetime.<span class="f">now</span>() - <span class="f">timedelta</span>(days=<span class="n">365</span>)</span>
-<span class="cl"><span class="ln">8</span>    long_term_users = [</span>
-<span class="cl ref bad"><span class="ln">9</span>        u <span class="k">for</span> u <span class="k">in</span> active_users <span class="k">if</span> u[<span class="s">'join_date'</span>] &lt; one_year_ago</span>
-<span class="cl ref bad"><span class="ln">10</span>    ]</span>
-<span class="cl"><span class="ln">11</span>    results = []</span>
-<span class="cl hit"><span class="ln">12</span>    <span class="k">for</span> u <span class="k">in</span> long_term_users:</span>
-<span class="cl hit chg-in"><span class="ln">13</span>        results.<span class="f">append</span>(<span class="f">format_user</span>(u))</span>
-<span class="cl"><span class="ln">14</span>    <span class="k">return</span> results</span></pre>
-<pre class="py ast-code" data-show="3"><span class="cl"><span class="ln">1</span><span class="k">def</span> <span class="f">process_user_data</span>(users):</span>
-<span class="cl"><span class="ln">2</span>    active_users = [u <span class="k">for</span> u <span class="k">in</span> users <span class="k">if</span> u[<span class="s">'status'</span>] == <span class="s">'active'</span>]</span>
-<span class="cl"><span class="ln">3</span>    <span class="k">from</span> datetime <span class="k">import</span> datetime, timedelta</span>
-<span class="cl"><span class="ln">4</span>    one_year_ago = datetime.<span class="f">now</span>() - <span class="f">timedelta</span>(days=<span class="n">365</span>)</span>
-<span class="cl"><span class="ln">5</span>    long_term_users = [</span>
-<span class="cl"><span class="ln">6</span>        u <span class="k">for</span> u <span class="k">in</span> active_users <span class="k">if</span> u[<span class="s">'join_date'</span>] &lt; one_year_ago</span>
-<span class="cl"><span class="ln">7</span>    ]</span>
-<span class="cl chg"><span class="ln">8</span>    <span class="k">return</span> [<span class="s">f"{u['name']} &lt;{u['email']}&gt;"</span></span>
-<span class="cl ref bad chg"><span class="ln">9</span>            <span class="k">for</span> u <span class="k">in</span> long_term_users]</span></pre>
+    <div class="ast-band" data-r style="--d:1">
+      <div class="ab-h"><i class="fa-solid fa-anchor"></i><div><b>AST-driven structural alignment</b><span>Links stay valid as code evolves</span></div></div>
+      <div class="ab-anchor">
+        <div class="ab-row"><span class="ab-k">Structural path</span><span class="chip">module</span><i class="fa-solid fa-chevron-right"></i><span class="chip">function_definition</span><i class="fa-solid fa-chevron-right"></i><span class="chip">for_statement</span></div>
+        <div class="ab-row"><span class="ab-k">Target identity</span><span class="chip">type</span><span class="chip">name</span><span class="chip">content hash</span></div>
       </div>
-      <div class="ast-legend">
-        <span><i class="sw hit"></i> Resolved by the AST anchor</span>
-        <span><i class="sw ref"></i> Line-number reference (lines 9 and 10)</span>
-        <span class="hint"><i class="fa-solid fa-arrow-right"></i> to step through edits</span>
-      </div>
-    </div>
-
-    <div class="col grow ast-right">
-      <div class="card anchor-card" data-r style="--d:1">
-        <h4><i class="fa-solid fa-anchor"></i> AST anchor (Tree-sitter)</h4>
-        <div class="a-k">1 · Structural path <span>type, name, sibling index per level</span></div>
-        <div class="path">
-          <span>module</span><i class="fa-solid fa-chevron-right"></i>
-          <span>function_definition <b>process_user_data</b> <em data-show="0 1 3">#0</em><em class="moved" data-show="2">#0 → #1</em></span><i class="fa-solid fa-chevron-right"></i>
-          <span data-show="0 1 2">for_statement</span><span class="gone" data-show="3">for_statement</span>
-        </div>
-        <div class="a-k">2 · Target identity <span>minimal enclosing node</span></div>
-        <div class="path"><span>type</span><span>name</span><span>content hash</span></div>
-        <p class="note">Re-resolved by scoring candidates as <span class="m">s<sub>path</sub> · s<sub>target</sub></span>, matching each level by type, then name, then position.</p>
-      </div>
-
-      <div class="verdicts" data-r style="--d:2">
-        <div class="vd">
-          <div class="vk">Line numbers</div>
-          <div class="vv ok" data-show="0"><i class="fa-solid fa-circle-check"></i> Lines 9 and 10 hold the loop</div>
-          <div class="vv bad" data-show="1"><i class="fa-solid fa-circle-xmark"></i> Lines 9 and 10 now point to <span class="code">]</span> and <span class="code">results = []</span></div>
-          <div class="vv bad" data-show="2"><i class="fa-solid fa-circle-xmark"></i> Lines 9 and 10 now point to the filter</div>
-          <div class="vv bad" data-show="3"><i class="fa-solid fa-circle-xmark"></i> Line 9 is now a comprehension; line 10 no longer exists</div>
-        </div>
-        <div class="vd">
-          <div class="vk">AST anchor</div>
-          <div class="vv" data-show="0"><span class="pill blue">Valid</span> The path resolves to the loop</div>
-          <div class="vv" data-show="1"><span class="pill blue">Valid</span> Formatting leaves the structural path, and all anchors, intact</div>
-          <div class="vv" data-show="2"><span class="pill blue">Valid</span> Moved among siblings: re-resolved by type and name, position is only the tie-breaker</div>
-          <div class="vv" data-show="3"><span class="pill gold">Outdated</span> No loop left to resolve: flagged in the UI, prompting a refresh</div>
-        </div>
+      <div class="ab-states">
+        <div><span class="pill blue">Valid</span><span>Survives formatting, moves, and renames</span></div>
+        <div><span class="pill gold">Outdated</span><span>Flagged when no longer resolvable</span></div>
       </div>
     </div>
   </div>
@@ -382,10 +285,6 @@
     <figure class="fig sync" data-r>
       <img src="figures/paper/intent-sync.svg" alt="Seven-step loop: instruction, NL diff, refine, code change, incremental NL diff, global and local validation">
     </figure>
-    <div class="legend3" data-r style="--d:1">
-      <span><i class="solid"></i> developer actions</span>
-      <span><i class="dashed"></i> system actions</span>
-    </div>
   </div>
 
   <div class="foot"><span class="pg"></span></div>
