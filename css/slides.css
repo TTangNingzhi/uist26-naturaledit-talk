@@ -27,7 +27,7 @@
   --mono: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
   --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
 
-  --rail-w: 264px;
+  --rail-w: 246px;
   --s: 1; /* stage scale, set by slides.js */
 }
 
@@ -74,8 +74,7 @@ a { color: inherit; }
   padding: 0 8px 18px;
 }
 
-.rail-brand .venue { height: 36px; }
-.rail-brand .lab { height: 44px; border-radius: 9px; }
+.rail-brand .venue { height: 40px; }
 
 .rail-nav {
   flex: 1;

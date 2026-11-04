@@ -440,11 +440,11 @@ a.venue-tag i { margin-left: 3px; font-size: 0.8em; }
 .c-top { display: flex; align-items: center; gap: 40px; }
 
 .c-title { margin-top: 16px; text-align: center; }
-.c-title h2 { margin: 0; font-size: 27px; line-height: 1.25; letter-spacing: -0.01em; white-space: nowrap; }
-.c-title p { margin: 8px 0 0; font-size: 21px; color: var(--ink-2); }
-.c-title p.mail { margin-top: 4px; font-family: var(--mono); font-size: 16px; color: var(--muted); }
+.c-title h2 { margin: 0; font-size: 29.5px; line-height: 1.25; letter-spacing: -0.01em; white-space: nowrap; }
+.c-title p { margin: 10px 0 0; font-size: 24px; color: var(--ink-2); }
+.c-title p.mail { margin-top: 6px; font-family: var(--mono); font-size: 19px; color: var(--muted); }
 
-.c-mid { display: grid; grid-template-columns: auto 720px; justify-content: center; align-items: center; gap: 64px; margin-top: 30px; }
+.c-mid { display: grid; grid-template-columns: auto 600px; justify-content: center; align-items: center; gap: 64px; margin-top: 30px; }
 
 .c-left { display: flex; flex-direction: column; gap: 30px; }
 .c-me { display: flex; align-items: center; gap: 34px; }
@@ -455,11 +455,10 @@ a.venue-tag i { margin-left: 3px; font-size: 0.8em; }
 .c-card a { display: flex; align-items: center; gap: 16px; font-size: 23px; color: var(--ink); text-decoration: none; }
 .c-card .ic { flex: none; width: 30px; text-align: center; font-size: 24px; color: var(--ink); }
 
-.c-res { display: flex; flex-direction: column; gap: 12px; }
-.c-try { display: flex; align-items: center; gap: 14px; padding: 12px 18px; border-radius: 12px; background: var(--warm-light); font-size: 21px; color: var(--ink-2); text-decoration: none; }
-.c-try img { height: 30px; }
-.c-repo { display: flex; align-items: center; gap: 14px; padding: 0 18px; font-family: var(--mono); font-size: 16.5px; color: var(--ink-2); text-decoration: none; }
+.c-res { display: flex; flex-direction: column; gap: 10px; }
+.c-repo { display: flex; align-items: center; gap: 14px; font-family: var(--mono); font-size: 16.5px; color: var(--ink-2); text-decoration: none; }
 .c-repo i { width: 30px; text-align: center; font-size: 26px; color: var(--ink); }
+.c-repo img { width: 28px; margin: 0 1px; }
 
 .c-shot { margin: 0; }
 .c-shot img { display: block; width: 100%; border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 14px 34px rgba(12, 35, 64, 0.12); }
