@@ -160,7 +160,7 @@
     <a class="pub" href="https://arxiv.org/abs/2508.01523" target="_blank" rel="noopener">Published in <b>VL/HCC 2025</b> <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
   </div>
 
-  <div class="body row s-form">
+  <div class="body row s-form" data-steps="2">
     <div class="col form-left">
       <figure class="proto" data-r>
         <img src="figures/paper/pasta-prototype.png" alt="Basic prototype: a selected code region with an editable summary-mediated prompt showing inline insertions and deletions">
@@ -171,12 +171,12 @@
       </div>
     </div>
 
-    <div class="col grow needs">
-      <div class="needs-h" data-r style="--d:1"><span>Shortcomings observed</span><span>Design goals</span></div>
-      <div class="need" data-r style="--d:2"><div class="nd-gap"><i class="fa-solid fa-lock"></i><div><b>Overly rigid representations</b><span>A fixed abstraction level that cannot adapt across cognitive tasks</span></div></div><i class="fa-solid fa-arrow-right"></i><div class="nd-goal"><b>DG1</b> Enable an adaptive abstraction gradient</div></div>
-      <div class="need" data-r style="--d:3"><div class="nd-gap"><i class="fa-solid fa-link-slash"></i><div><b>Implicit NL-code links</b><span>Mentally tracing NL to code burdens working memory</span></div></div><i class="fa-solid fa-arrow-right"></i><div class="nd-goal"><b>DG2</b> Ensure tight and interactive mapping</div></div>
-      <div class="need" data-r style="--d:4"><div class="nd-gap"><i class="fa-solid fa-pencil"></i><div><b>Disproportionate editing effort</b><span>Translating vague intent into precise summary edits</span></div></div><i class="fa-solid fa-arrow-right"></i><div class="nd-goal"><b>DG3</b> Minimize viscosity in intent specification</div></div>
-      <div class="need" data-r style="--d:5"><div class="nd-gap"><i class="fa-solid fa-eye-slash"></i><div><b>Summaries fully regenerated</b><span>Intended changes cannot be told apart from incidental rewording</span></div></div><i class="fa-solid fa-arrow-right"></i><div class="nd-goal"><b>DG4</b> Maintain high visibility and consistency</div></div>
+    <div class="col grow needs" data-build="1">
+      <div class="needs-h"><span>Shortcomings observed</span><span>Design goals</span></div>
+      <div class="need"><div class="nd-gap"><i class="fa-solid fa-lock"></i><div><b>Overly rigid representations</b><span>A fixed abstraction level that cannot adapt across cognitive tasks</span></div></div><i class="fa-solid fa-arrow-right"></i><div class="nd-goal"><b>DG1</b> Enable an adaptive abstraction gradient</div></div>
+      <div class="need"><div class="nd-gap"><i class="fa-solid fa-link-slash"></i><div><b>Implicit NL-code links</b><span>Mentally tracing NL to code burdens working memory</span></div></div><i class="fa-solid fa-arrow-right"></i><div class="nd-goal"><b>DG2</b> Ensure tight and interactive mapping</div></div>
+      <div class="need"><div class="nd-gap"><i class="fa-solid fa-pencil"></i><div><b>Disproportionate editing effort</b><span>Translating vague intent into precise summary edits</span></div></div><i class="fa-solid fa-arrow-right"></i><div class="nd-goal"><b>DG3</b> Minimize viscosity in intent specification</div></div>
+      <div class="need"><div class="nd-gap"><i class="fa-solid fa-eye-slash"></i><div><b>Summaries fully regenerated</b><span>Intended changes cannot be told apart from incidental rewording</span></div></div><i class="fa-solid fa-arrow-right"></i><div class="nd-goal"><b>DG4</b> Maintain high visibility and consistency</div></div>
     </div>
   </div>
 
@@ -253,11 +253,11 @@
   <h2 class="title"><span class="hl">Interactive</span> cross-representation mapping</h2>
   <p class="lead">Each NL representation is segmented into semantic units, explicitly linked to the code they describe.</p>
 
-  <div class="body s-f2">
+  <div class="body s-f2" data-steps="2">
     <figure class="fig mapfig" data-r>
       <img src="figures/paper/interactive-mapping.svg" alt="As the cursor moves from one summary segment to the next, the highlighted code lines update">
     </figure>
-    <div class="ast-band" data-r style="--d:1">
+    <div class="ast-band" data-build="1">
       <div class="ab-h"><div class="ab-t"><i class="fa-solid fa-anchor"></i><b>AST-Driven Structural Alignment</b></div><span>Links stay valid as code evolves through formatting changes, moves, and renames</span></div>
       <div class="ab-grid">
         <span class="ab-k">Structural path</span>
@@ -321,7 +321,7 @@
   <div class="eyebrow"><span class="rq">Technical evaluation</span>Code editing benchmarks</div>
   <h2 class="title">The NL-mediated workflow preserves technical soundness</h2>
 
-  <div class="body s-bench">
+  <div class="body s-bench" data-steps="2">
     <div class="setup" data-r>
       <div class="conds">
         <div class="cond">
@@ -344,12 +344,12 @@
           </figure>
       </div>
 
-      <div class="col bench-right">
-        <div class="res" data-r style="--d:2">
+      <div class="col bench-right" data-build="1">
+        <div class="res">
           <div class="res-h"><span class="stat">−1.92<small>%</small></span><span>average vs. Direct Instruction<br><span class="note">maximum −8.98%</span></span></div>
           <h3>Comparable correctness</h3>
         </div>
-        <div class="res gold-l" data-r style="--d:3">
+        <div class="res gold-l">
           <div class="res-h"><span class="stat gold">+0.48<small>%</small></span><span>on <i>Lazy</i> instructions<br><span class="note">vs. −4.45% on <i>Descriptive</i></span></span></div>
           <h3>More robust to vague instructions</h3>
         </div>
@@ -367,7 +367,7 @@
   <div class="eyebrow"><span class="rq">Technical evaluation</span>Expert ratings</div>
   <h2 class="title">Intermediate NL artifacts were consistently rated high quality</h2>
 
-  <div class="body row s-expert">
+  <div class="body row s-expert" data-steps="2">
     <figure class="fig expfig" data-r>
       <img src="figures/paper/ratings-result.svg" alt="Expert ratings of summary, mapping, and diff quality across granularity, for structured and unstructured variants">
     </figure>
@@ -381,7 +381,7 @@
           <div><span class="ck">Diff</span><span class="pill">Faithfulness</span><span class="pill">Completeness</span><span class="pill">Salience</span></div>
         </div>
       </div>
-      <div class="xr gold-l" data-r style="--d:2"><span class="stat gold">42<small>/48</small></span><p class="small">mean scores between <b>4.5 and 5.0</b></p></div>
+      <div class="xr gold-l" data-build="1"><span class="stat gold">42<small>/48</small></span><p class="small">mean scores between <b>4.5 and 5.0</b></p></div>
     </div>
   </div>
 
@@ -543,7 +543,7 @@
   <h2 class="title">Generalizing to spec-driven development</h2>
   <p class="lead">In industrial tools such as <b class="nw"><i class="fa-brands fa-github brand"></i>GitHub Spec Kit</b> and <b class="nw"><i class="fa-brands fa-amazon brand"></i>Amazon Kiro</b>, NL representations of the code (e.g., <span class="code">design.md</span>, <span class="code">tasks.md</span>) serve as the primary medium for human-AI interaction (e.g., code review, planning).</p>
 
-  <div class="body s-spec">
+  <div class="body s-spec" data-steps="2">
     <div class="line3" data-r>
       <div class="node"><i class="fa-solid fa-user"></i><b>Developer intent</b></div>
       <span class="link"></span>
@@ -552,10 +552,10 @@
       <div class="node"><i class="fa-solid fa-code"></i><b>AI-written code</b></div>
     </div>
 
-    <div class="spec-feats">
-      <div class="sp" data-r style="--d:1"><span class="fn">F1</span><div><b>Adaptive representation</b><p class="small">Read specs from a high-level overview down to line-by-line detail</p></div></div>
-      <div class="sp" data-r style="--d:2"><span class="fn">F2</span><div><b>Interactive mapping</b><p class="small">Link each spec item to the code that implements it, in place</p></div></div>
-      <div class="sp" data-r style="--d:3"><span class="fn">F3</span><div><b>Bidirectional synchronization</b><p class="small">Edit specs to change code, and see code changes as spec diffs</p></div></div>
+    <div class="spec-feats" data-build="1">
+      <div class="sp"><span class="fn">F1</span><div><b>Adaptive representation</b><p class="small">Read specs from a high-level overview down to line-by-line detail</p></div></div>
+      <div class="sp"><span class="fn">F2</span><div><b>Interactive mapping</b><p class="small">Link each spec item to the code that implements it, in place</p></div></div>
+      <div class="sp"><span class="fn">F3</span><div><b>Bidirectional synchronization</b><p class="small">Edit specs to change code, and see code changes as spec diffs</p></div></div>
     </div>
   </div>
 
